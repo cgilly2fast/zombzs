@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0j8qagxgwjsr"]
+
+[ext_resource type="PackedScene" uid="uid://ca5ctdqg6rn1k" path="res://Models/Trees/pine.glb" id="1_6dufr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hrwcm"]
+albedo_color = Color(0.368627, 0.501961, 0.32549, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0gidn"]
+albedo_color = Color(0.188235, 0.270588, 0.160784, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_06id2"]
+points = PackedVector3Array(-0.589, 0.370285, 0, -0.2945, 0.370285, -0.510089, -0.212169, 0, 0, -0.2945, 0.370285, 0.510089, -0.284814, 1.63019, 0, 0.2945, 0.370285, -0.510089, -0.106085, 0, -0.183744, -0.142407, 1.63019, -0.246656, -0.106085, 0, 0.183644, 0.2945, 0.370285, 0.510089, -0.142407, 1.63019, 0.246556, 0, 2.28985, 0, 0.589, 0.370285, 0, 0.105969, 0, -0.183744, 0.142292, 1.63019, -0.246656, 0.105969, 0, 0.183644, 0.212054, 0, 0, 0.284699, 1.63019, 0, 0.142292, 1.63019, 0.246556)
+
+[node name="pine" instance=ExtResource("1_6dufr")]
+
+[node name="pine2" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_hrwcm")
+surface_material_override/1 = SubResource("StandardMaterial3D_0gidn")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="pine2" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="pine2/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_06id2")

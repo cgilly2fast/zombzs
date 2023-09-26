@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://def5m0tpdppnr"]
+
+[ext_resource type="PackedScene" uid="uid://7x4ycfkksrsv" path="res://Models/Graves/shovel.glb" id="1_2tx21"]
+[ext_resource type="Material" uid="uid://dqf0jhq8rdgcb" path="res://Models/Graves/grave_stone.tres" id="2_cfue8"]
+
+[node name="shovel" instance=ExtResource("1_2tx21")]
+
+[node name="shovel2" parent="." index="0"]
+surface_material_override/1 = ExtResource("2_cfue8")

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://diiqhpj447ywf"]
+
+[ext_resource type="PackedScene" uid="uid://dd0u48k5ycv3j" path="res://Models/Graves/gravestoneWide.glb" id="1_a26br"]
+[ext_resource type="Material" uid="uid://dqf0jhq8rdgcb" path="res://Models/Graves/grave_stone.tres" id="2_wrps1"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_7lhgf"]
+points = PackedVector3Array(0, 0.4897, 0.0673424, 0.393311, 0.0580968, 0.1079, 0.0589813, 0.487303, 0.0673424, 0, 0.4897, -0.0673636, -0.0590583, 0.487303, 0.0673424, -0.393311, 0.0580968, 0.1079, 0.393311, 0, 0.1079, 0.393311, 0.0580968, -0.1079, 0.341337, 0.406677, 0.0673424, 0.287746, 0.431699, 0.0673424, 0.23246, 0.452407, 0.0673424, 0.175635, 0.468609, 0.0673424, 0.117655, 0.480305, 0.0673424, 0.0589813, 0.487303, -0.0673636, -0.393311, 0.0580968, -0.1079, -0.0590583, 0.487303, -0.0673636, -0.117732, 0.480305, 0.0673424, -0.287823, 0.431699, 0.0673424, -0.341414, 0.406677, 0.0673424, -0.393311, 0, 0.1079, -0.175712, 0.468609, 0.0673424, -0.232537, 0.452407, 0.0673424, 0.393311, 0, -0.1079, 0.287746, 0.431699, -0.0673636, 0.341337, 0.406677, -0.0673636, 0.117655, 0.480305, -0.0673636, 0.175635, 0.468609, -0.0673636, 0.23246, 0.452407, -0.0673636, -0.393311, 0, -0.1079, -0.341414, 0.406677, -0.0673636, -0.287823, 0.431699, -0.0673636, -0.232537, 0.452407, -0.0673636, -0.175712, 0.468609, -0.0673636, -0.117732, 0.480305, -0.0673636)
+
+[node name="gravestoneWide" instance=ExtResource("1_a26br")]
+
+[node name="gravestoneWide2" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_wrps1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="gravestoneWide2" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="gravestoneWide2/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_7lhgf")

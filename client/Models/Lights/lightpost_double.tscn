@@ -1,0 +1,13 @@
+[gd_scene load_steps=5 format=3 uid="uid://xg7xifnkk7wy"]
+
+[ext_resource type="PackedScene" uid="uid://c5ddkonv55gla" path="res://Models/Lights/lightpostDouble.glb" id="1_7d761"]
+[ext_resource type="Material" uid="uid://byxpl2jp6mxiv" path="res://Models/Brick Walls/brick_wall_grey.tres" id="2_83cjm"]
+[ext_resource type="Material" uid="uid://cqa34xcrhrsip" path="res://lightpost_light_grey.tres" id="3_vxckd"]
+[ext_resource type="Material" uid="uid://dhv2kmef6j3ly" path="res://Lightpost_light.tres" id="4_x6jm6"]
+
+[node name="lightpostDouble" instance=ExtResource("1_7d761")]
+
+[node name="lightpostDouble2" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_83cjm")
+surface_material_override/1 = ExtResource("3_vxckd")
+surface_material_override/2 = ExtResource("4_x6jm6")

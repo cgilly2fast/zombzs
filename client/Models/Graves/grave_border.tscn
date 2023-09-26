@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bi52p1te54bfw"]
+
+[ext_resource type="PackedScene" uid="uid://y436d4awefmc" path="res://Models/Graves/graveBorder.glb" id="1_q8c5u"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8xhh5"]
+albedo_color = Color(0.494118, 0.34902, 0.0313726, 1)
+
+[node name="graveBorder" instance=ExtResource("1_q8c5u")]
+
+[node name="graveBorder2" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_8xhh5")

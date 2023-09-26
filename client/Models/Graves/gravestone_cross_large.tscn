@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://5h45mrigbvt2"]
+
+[ext_resource type="PackedScene" uid="uid://432gc5b50qg1" path="res://Models/Graves/gravestoneCrossLarge.glb" id="1_4ivgn"]
+[ext_resource type="Material" uid="uid://dqf0jhq8rdgcb" path="res://Models/Graves/grave_stone.tres" id="2_bvv1t"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_iw81y"]
+points = PackedVector3Array(-0.220769, 0, -0.145632, -0.220769, 0, 0.145632, -0.220769, 0.0782551, -0.145632, 0.220769, 0, -0.145632, 0.220769, 0, 0.145632, -0.220769, 0.0782551, 0.145632, 0.220769, 0.0782551, -0.145632, -0.17824, 0.798257, -0.0250038, -0.0645278, 0.938326, -0.035011, 0.220769, 0.0782551, 0.145632, -0.0645278, 0.938326, 0.0349825, -0.17824, 0.798257, 0.0249753, 0.0644846, 0.938326, -0.035011, 0.178197, 0.798257, -0.0250038, 0.178197, 0.798257, 0.0249753, 0.0644846, 0.938326, 0.0349825)
+
+[node name="gravestoneCrossLarge" instance=ExtResource("1_4ivgn")]
+
+[node name="gravestoneCrossLarge2" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_bvv1t")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="gravestoneCrossLarge2" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="gravestoneCrossLarge2/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_iw81y")

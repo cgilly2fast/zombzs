@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://derlq1jg6o1hq"]
+
+[ext_resource type="PackedScene" uid="uid://dulewc2rqnwp1" path="res://Models/Graves/coffinOld.glb" id="1_y8qnx"]
+
+[node name="coffinOld" instance=ExtResource("1_y8qnx")]

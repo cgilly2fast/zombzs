@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlt417raktl5"]
+
+[ext_resource type="PackedScene" uid="uid://8hlwmivlxdbs" path="res://Models/Graves/gravestoneRoof.glb" id="1_dv8y4"]
+[ext_resource type="Material" uid="uid://dqf0jhq8rdgcb" path="res://Models/Graves/grave_stone.tres" id="2_km3nm"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_knsh5"]
+points = PackedVector3Array(-0.195, 0, -0.07475, 0.194962, 0, -0.07475, -0.195, 0, 0.07475, -0.195, 0.532948, -0.07475, 0.194962, 0, 0.07475, 0.194962, 0.532948, -0.07475, -0.195, 0.532948, 0.07475, -3.81619e-05, 0.585, -0.07475, 0.194962, 0.532948, 0.07475, -3.81619e-05, 0.585, 0.07475)
+
+[node name="gravestoneRoof" instance=ExtResource("1_dv8y4")]
+
+[node name="gravestoneRoof2" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_km3nm")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="gravestoneRoof2" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="gravestoneRoof2/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_knsh5")

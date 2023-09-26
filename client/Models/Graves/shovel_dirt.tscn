@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://3bdt6a1x8kgq"]
+
+[ext_resource type="PackedScene" uid="uid://bdm224dwt27n4" path="res://Models/Graves/shovelDirt.glb" id="1_rf1v8"]
+[ext_resource type="Material" uid="uid://dqf0jhq8rdgcb" path="res://Models/Graves/grave_stone.tres" id="2_81mpi"]
+[ext_resource type="Material" uid="uid://dbj8tsmvc3h8n" path="res://Models/Graves/dirt.tres" id="3_2126e"]
+
+[node name="shovelDirt" instance=ExtResource("1_rf1v8")]
+
+[node name="shovelDirt2" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_81mpi")
+surface_material_override/1 = ExtResource("3_2126e")
