@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://tkfdolstdwsn"]
+
+[ext_resource type="PackedScene" uid="uid://dpxg55jxkwj0w" path="res://Models/Guns/fusil_5.fbx" id="1_ux0ds"]
+
+[node name="fusil_5" instance=ExtResource("1_ux0ds")]

@@ -153,6 +153,8 @@ emission = Color(0.341176, 0.831373, 0.247059, 1)
 emission_energy_multiplier = 2.8
 
 [node name="crypt" type="StaticBody3D"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="crypt2" type="MeshInstance3D" parent="."]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)

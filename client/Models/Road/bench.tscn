@@ -12,6 +12,8 @@ points = PackedVector3Array(0.38475, 0.548955, 0.155202, 0.38475, 0.548579, 0.15
 surface_material_override/1 = ExtResource("2_elqc2")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="bench2" index="0"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="bench2/StaticBody3D" index="0"]
 shape = SubResource("ConvexPolygonShape3D_ip7cr")

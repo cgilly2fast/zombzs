@@ -1,0 +1,249 @@
+[gd_scene load_steps=31 format=3 uid="uid://dscq1kfirrj0o"]
+
+[ext_resource type="Script" path="res://Scripts/GameOver.gd" id="1_a6xkf"]
+[ext_resource type="FontFile" uid="uid://bi845txyt5at7" path="res://Assests/terror_pro.ttf" id="1_v136s"]
+[ext_resource type="Texture2D" uid="uid://dddxw2170eqsj" path="res://UI/homer-loading.png" id="3_04px1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_grvns"]
+font = ExtResource("1_v136s")
+font_size = 96
+font_color = Color(0.956863, 0, 0.270588, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0dnqr"]
+atlas = ExtResource("3_04px1")
+region = Rect2(0, 0, 333, 243)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_butjv"]
+atlas = ExtResource("3_04px1")
+region = Rect2(333, 0, 333, 243)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2d2n"]
+atlas = ExtResource("3_04px1")
+region = Rect2(666, 0, 333, 243)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_buiwy"]
+atlas = ExtResource("3_04px1")
+region = Rect2(999, 0, 333, 243)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5l1wb"]
+atlas = ExtResource("3_04px1")
+region = Rect2(1332, 0, 333, 243)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gjwhe"]
+atlas = ExtResource("3_04px1")
+region = Rect2(1665, 0, 333, 243)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ayje7"]
+atlas = ExtResource("3_04px1")
+region = Rect2(1998, 0, 333, 243)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i1obf"]
+atlas = ExtResource("3_04px1")
+region = Rect2(2331, 0, 333, 243)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gw2wq"]
+atlas = ExtResource("3_04px1")
+region = Rect2(2664, 0, 333, 243)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6x8n"]
+atlas = ExtResource("3_04px1")
+region = Rect2(2997, 0, 333, 243)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjoc6"]
+atlas = ExtResource("3_04px1")
+region = Rect2(3330, 0, 333, 243)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_df0ij"]
+atlas = ExtResource("3_04px1")
+region = Rect2(3663, 0, 333, 243)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmymd"]
+atlas = ExtResource("3_04px1")
+region = Rect2(3996, 0, 333, 243)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eiye0"]
+atlas = ExtResource("3_04px1")
+region = Rect2(4329, 0, 333, 243)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ikcj0"]
+atlas = ExtResource("3_04px1")
+region = Rect2(4662, 0, 333, 243)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_56dkq"]
+atlas = ExtResource("3_04px1")
+region = Rect2(4995, 0, 333, 243)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6okc"]
+atlas = ExtResource("3_04px1")
+region = Rect2(5328, 0, 333, 243)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dvqb6"]
+atlas = ExtResource("3_04px1")
+region = Rect2(5661, 0, 333, 243)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y8yim"]
+atlas = ExtResource("3_04px1")
+region = Rect2(5994, 0, 333, 243)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85lqn"]
+atlas = ExtResource("3_04px1")
+region = Rect2(6327, 0, 333, 243)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bc6ih"]
+atlas = ExtResource("3_04px1")
+region = Rect2(6660, 0, 333, 243)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_np7wr"]
+atlas = ExtResource("3_04px1")
+region = Rect2(6993, 0, 333, 243)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rx2h6"]
+atlas = ExtResource("3_04px1")
+region = Rect2(7326, 0, 333, 243)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fm604"]
+atlas = ExtResource("3_04px1")
+region = Rect2(7659, 0, 333, 243)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxwnl"]
+atlas = ExtResource("3_04px1")
+region = Rect2(7992, 0, 333, 243)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l707u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0dnqr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_butjv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q2d2n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_buiwy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5l1wb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gjwhe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ayje7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i1obf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gw2wq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v6x8n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jjoc6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_df0ij")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hmymd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eiye0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ikcj0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_56dkq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n6okc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dvqb6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y8yim")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_85lqn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bc6ih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_np7wr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rx2h6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fm604")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxwnl")
+}],
+"loop": true,
+"name": &"Loading",
+"speed": 25.0
+}]
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_a6xkf")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 647.0
+color = Color(0.72549, 0.027451, 0.215686, 0.427451)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+offset_left = 341.0
+offset_top = 138.0
+offset_right = 835.0
+offset_bottom = 249.0
+text = "WASTED..."
+label_settings = SubResource("LabelSettings_grvns")
+
+[node name="Play" type="Button" parent="."]
+layout_mode = 0
+offset_left = 434.0
+offset_top = 283.0
+offset_right = 734.0
+offset_bottom = 353.0
+theme_override_fonts/font = ExtResource("1_v136s")
+theme_override_font_sizes/font_size = 48
+text = "Play Again
+"
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 483.0
+offset_top = 396.0
+offset_right = 683.0
+offset_bottom = 466.0
+theme_override_colors/font_color = Color(0.905882, 0, 0.207843, 1)
+theme_override_fonts/font = ExtResource("1_v136s")
+theme_override_font_sizes/font_size = 48
+text = "Quit"
+
+[node name="Loading" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(574, 390)
+sprite_frames = SubResource("SpriteFrames_l707u")
+animation = &"Loading"
+frame_progress = 0.7109
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

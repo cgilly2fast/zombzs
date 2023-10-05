@@ -8,8 +8,9 @@ albedo_color = Color(0.188235, 0.270588, 0.160784, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l4fx2"]
 albedo_color = Color(0.247059, 0.352941, 0.211765, 1)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2lvtm"]
-points = PackedVector3Array(-0.589, 0.35693, 0, -0.2945, 0.394128, -0.508719, -0.106085, 0, -0.183748, -0.212169, 0, 0, -0.2945, 0.319517, 0.508719, -0.110236, 1.55264, 0.293499, -0.38963, 1.10025, 0.00119513, 0.2945, 0.394128, -0.508719, -0.203175, 1.10498, -0.323776, 0.105969, 0, -0.183748, -0.106085, 0, 0.183649, 0.2945, 0.319517, 0.508719, 0.260253, 0.772774, 0.439104, -0.213899, 0.719665, 0.442092, 0.17331, 1.57974, 0.29091, -0.03171, 2.19641, -0.0151381, -0.251951, 1.51588, 0.0491987, 0.589, 0.35693, 0, 0.17331, 1.53329, -0.200181, 0.315025, 1.57006, 0.0441195, 0.212054, 0, 0, 0.105969, 0, 0.183649, 0.497214, 0.776429, 0.0250973)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_dil0k"]
+height = 2.2
+radius = 0.4
 
 [node name="pineCrooked" instance=ExtResource("1_hark6")]
 
@@ -18,6 +19,9 @@ surface_material_override/0 = SubResource("StandardMaterial3D_roac3")
 surface_material_override/1 = SubResource("StandardMaterial3D_l4fx2")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="pineCrooked2" index="0"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="pineCrooked2/StaticBody3D" index="0"]
-shape = SubResource("ConvexPolygonShape3D_2lvtm")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.10931, 0)
+shape = SubResource("CylinderShape3D_dil0k")

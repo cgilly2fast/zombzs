@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dco85cyvj1v8r" path="res://Models/Graves/gravestoneBevel.glb" id="1_6xps8"]
 [ext_resource type="Material" uid="uid://dqf0jhq8rdgcb" path="res://Models/Graves/grave_stone.tres" id="2_6qwc3"]
-[ext_resource type="Material" uid="uid://cqa34xcrhrsip" path="res://lightpost_light_grey.tres" id="3_q31mb"]
+[ext_resource type="Material" uid="uid://cqa34xcrhrsip" path="res://Models/Lights/lightpost_light_grey.tres" id="3_q31mb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jxsxc"]
 size = Vector3(0.4, 0.6, 0.15)
@@ -14,6 +14,8 @@ surface_material_override/0 = ExtResource("2_6qwc3")
 surface_material_override/1 = ExtResource("3_q31mb")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="gravestoneBevel2" index="0"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="gravestoneBevel2/StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000254124, 0.305068, 0)

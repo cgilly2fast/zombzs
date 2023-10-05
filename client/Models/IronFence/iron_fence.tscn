@@ -51,6 +51,8 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_tmaqc")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="ironFence2"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ironFence2/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42907, 0.454452)

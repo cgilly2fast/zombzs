@@ -1,0 +1,74 @@
+[gd_scene load_steps=12 format=3 uid="uid://c0v43wcnka62a"]
+
+[ext_resource type="Script" path="res://Scripts/BulletTrail.gd" id="1_wssk3"]
+[ext_resource type="Material" uid="uid://1xk2pxfvb1e" path="res://Models/Lights/BulletTrail.tres" id="2_ysn3i"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7g745"]
+albedo_color = Color(0.843137, 0, 0.156863, 1)
+roughness = 0.01
+emission_enabled = true
+emission = Color(0.819608, 0, 0.0980392, 1)
+emission_energy_multiplier = 0.4
+
+[sub_resource type="Curve" id="Curve_llkbr"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.0168141), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1a5ur"]
+curve = SubResource("Curve_llkbr")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1yif7"]
+direction = Vector3(2.08165e-12, 2.08165e-12, -1)
+spread = 25.0
+initial_velocity_min = 6.0
+initial_velocity_max = 8.0
+scale_curve = SubResource("CurveTexture_1a5ur")
+
+[sub_resource type="SphereMesh" id="SphereMesh_6h4uv"]
+radius = 0.04
+height = 0.08
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tdt0t"]
+albedo_color = Color(0.517647, 0.207843, 0.141176, 1)
+roughness = 0.01
+emission_enabled = true
+emission = Color(0.517647, 0.207843, 0.141176, 1)
+emission_energy_multiplier = 0.4
+
+[sub_resource type="Curve" id="Curve_gqldx"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.0168141), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_q83r7"]
+curve = SubResource("Curve_gqldx")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2cn12"]
+direction = Vector3(2.08165e-12, 2.08165e-12, -1)
+spread = 25.0
+initial_velocity_min = 6.0
+initial_velocity_max = 8.0
+scale_curve = SubResource("CurveTexture_q83r7")
+
+[node name="BulletTrail" type="MeshInstance3D"]
+material_override = ExtResource("2_ysn3i")
+script = ExtResource("1_wssk3")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="BloodSplatter" type="GPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_7g745")
+emitting = false
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_1yif7")
+draw_pass_1 = SubResource("SphereMesh_6h4uv")
+
+[node name="TerrainSplatter" type="GPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_tdt0t")
+emitting = false
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_2cn12")
+draw_pass_1 = SubResource("SphereMesh_6h4uv")

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8ivq584vysih"]
+
+[ext_resource type="PackedScene" uid="uid://dv3fsb25u1h7t" path="res://Models/Guns/fusil_1.fbx" id="1_ryt3m"]
+
+[node name="fusil_1" instance=ExtResource("1_ryt3m")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
