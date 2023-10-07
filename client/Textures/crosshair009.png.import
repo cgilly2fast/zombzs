@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://m77dlrqfdeef"
-path="res://.godot/imported/normal_frame.png-be2572e361af9089032fcc292b3b150e.ctex"
+uid="uid://b2dxrf5ogehjk"
+path="res://.godot/imported/crosshair009.png-3d2f9899860afcdbc0727e3744615094.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/simplegrasstextured/images/normal_frame.png"
-dest_files=["res://.godot/imported/normal_frame.png-be2572e361af9089032fcc292b3b150e.ctex"]
+source_file="res://Textures/crosshair009.png"
+dest_files=["res://.godot/imported/crosshair009.png-3d2f9899860afcdbc0727e3744615094.ctex"]
 
 [params]
 
@@ -25,10 +25,10 @@ mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
-process/fix_alpha_border=false
+process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

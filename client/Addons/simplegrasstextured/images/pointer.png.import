@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://35qfdmr0xvq3"
-path="res://.godot/imported/pointer.png-c71285e8d0936a5d0863533b0c8187af.ctex"
+path="res://.godot/imported/pointer.png-292374924e7ba5a25097927bb55f262e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Addons/simplegrasstextured/images/pointer.png"
-dest_files=["res://.godot/imported/pointer.png-c71285e8d0936a5d0863533b0c8187af.ctex"]
+source_file="res://addons/simplegrasstextured/images/pointer.png"
+dest_files=["res://.godot/imported/pointer.png-292374924e7ba5a25097927bb55f262e.ctex"]
 
 [params]
 

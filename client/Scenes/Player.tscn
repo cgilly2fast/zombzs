@@ -1,13 +1,14 @@
-[gd_scene load_steps=17 format=3 uid="uid://can166jfd3ang"]
+[gd_scene load_steps=18 format=3 uid="uid://can166jfd3ang"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_ion2u"]
-[ext_resource type="PackedScene" uid="uid://tkfdolstdwsn" path="res://Models/Guns/fusil_5.tscn" id="2_nam32"]
+[ext_resource type="Texture2D" uid="uid://c1nocny7rsfe0" path="res://Textures/crosshair011.png" id="2_slh5j"]
 [ext_resource type="PackedScene" uid="uid://dg25ia7j456g6" path="res://Models/Guns/pistol.tscn" id="2_weupy"]
+[ext_resource type="Script" path="res://Scripts/WeaponManager.gd" id="3_ee483"]
 [ext_resource type="PackedScene" uid="uid://cx75ucdt0wv3" path="res://Models/Guns/steampunk_rifle.tscn" id="3_mnww5"]
-[ext_resource type="Texture2D" uid="uid://crwj3wi5a5xom" path="res://Textures/crosshair161.png" id="4_5butw"]
+[ext_resource type="PackedScene" uid="uid://dqq6ggdq2iiot" path="res://Models/Guns/gun_scenes/pistol_1.tscn" id="4_apwcg"]
 [ext_resource type="PackedScene" uid="uid://dfb4uibgnwvb3" path="res://Models/Melee/Axe.tscn" id="5_6chyl"]
-[ext_resource type="PackedScene" uid="uid://dv3fsb25u1h7t" path="res://Models/Guns/fusil_1.fbx" id="5_muwyn"]
-[ext_resource type="PackedScene" uid="uid://b8ivq584vysih" path="res://Models/Guns/fusil_1.tscn" id="6_85e50"]
+[ext_resource type="PackedScene" uid="uid://gdi4chjf64of" path="res://Models/Guns/gun_scenes/sniper_1.tscn" id="5_7xrco"]
+[ext_resource type="PackedScene" uid="uid://c0jbaftfgukso" path="res://Models/Guns/gun_scenes/subfusil_8.tscn" id="8_8klht"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4uxpl"]
 
@@ -36,7 +37,7 @@ step = 0.01
 tracks/0/type = "position_3d"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SteampunkAuto")
+tracks/0/path = NodePath("WeaponManager/SteampunkAuto")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = PackedFloat32Array(0, 1, 0.146, -0.271, -0.337, 0.3, 1, 0.146, -1, -0.337)
@@ -48,14 +49,14 @@ step = 0.01
 tracks/0/type = "position_3d"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Pistol")
+tracks/0/path = NodePath("WeaponManager/Pistol")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = PackedFloat32Array(0, 1, 0.18, -0.2, -0.455, 0.3, 1, 0.18, -1, -0.455)
 tracks/1/type = "position_3d"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Pistol2")
+tracks/1/path = NodePath("WeaponManager/Pistol2")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = PackedFloat32Array(0, 1, -0.18, -0.2, -0.455, 0.3, 1, -0.18, -1, -0.455)
@@ -67,7 +68,7 @@ step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Axe:rotation")
+tracks/0/path = NodePath("WeaponManager/Axe:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -79,7 +80,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Axe:position")
+tracks/1/path = NodePath("WeaponManager/Axe:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -106,7 +107,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Axe:rotation")
+tracks/1/path = NodePath("WeaponManager/Axe:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -118,7 +119,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Axe:position")
+tracks/2/path = NodePath("WeaponManager/Axe:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -154,33 +155,10 @@ mesh = SubResource("CapsuleMesh_7se6a")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.701306, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
-
-[node name="fusil_5" parent="Head/Camera3D" instance=ExtResource("2_nam32")]
-transform = Transform3D(0.3, -9.14758e-24, 7.34196e-16, 1.25293e-24, 0.3, -9.07702e-24, 0, 6.61744e-24, 0.3, -2.08165e-12, -0.701306, -2.08165e-12)
-visible = false
-
-[node name="fusil_6" parent="Head/Camera3D" instance=ExtResource("2_nam32")]
-transform = Transform3D(0.3, 1.03349e-22, 7.34196e-16, 1.25293e-24, 0.3, -9.07702e-24, 0, 1.25731e-22, 0.3, 0.165137, -0.240934, -0.466386)
-visible = false
-
-[node name="Pistol" parent="Head/Camera3D" instance=ExtResource("2_weupy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18, -1, -0.455)
-visible = false
-
-[node name="Pistol2" parent="Head/Camera3D" instance=ExtResource("2_weupy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18, -1, -0.455)
-visible = false
-
-[node name="SteampunkAuto" parent="Head/Camera3D" instance=ExtResource("3_mnww5")]
-transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0.165, -0.241, -0.466)
-visible = false
-
-[node name="fusil_1" parent="Head/Camera3D" instance=ExtResource("5_muwyn")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.165, -0.241, -0.466)
-
-[node name="fusil_2" parent="Head/Camera3D" instance=ExtResource("6_85e50")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 2.08165e-12, -0.241, -0.466)
+transform = Transform3D(1, 2.24476e-23, 0, -4.02216e-24, 1, 2.64698e-23, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+fov = 90.0
+near = 0.004
+far = 200.0
 
 [node name="GunAimRay" type="RayCast3D" parent="Head/Camera3D"]
 transform = Transform3D(1, 4.02216e-24, 0, -4.02216e-24, 1, 0, 0, 0, 1, 5.93784e-09, 0, -0.845031)
@@ -198,21 +176,12 @@ offset_bottom = 773.0
 color = Color(0.866667, 0.12549, 0.188235, 0.278431)
 
 [node name="Crosshair" type="TextureRect" parent="Head/Camera3D"]
-offset_right = 64.0
-offset_bottom = 64.0
-texture = ExtResource("4_5butw")
+offset_right = 128.0
+offset_bottom = 128.0
+texture = ExtResource("2_slh5j")
 
 [node name="AimRayEnd" type="Node3D" parent="Head/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, -101.5)
-
-[node name="Axe" parent="Head/Camera3D" instance=ExtResource("5_6chyl")]
-transform = Transform3D(-3.57507e-06, 1, -7.50026e-08, -0.85793, -3.1057e-06, -0.513766, -0.513766, -1.77241e-06, 0.85793, 0.0641758, -0.0771548, -0.40935)
-visible = false
-
-[node name="WeaponSwitching" type="AnimationPlayer" parent="Head/Camera3D"]
-libraries = {
-"": SubResource("AnimationLibrary_d8ctd")
-}
 
 [node name="MeleeAimRay" type="RayCast3D" parent="Head/Camera3D"]
 transform = Transform3D(30, 1.20665e-22, 0, -1.20665e-22, 30, 0, 0, 0, 3.5, 3.81438e-08, -0.00757277, -0.436314)
@@ -220,3 +189,42 @@ visible = false
 target_position = Vector3(2.08165e-12, 2.08165e-12, -0.5)
 collision_mask = 2
 collide_with_areas = true
+
+[node name="WeaponManager" type="Node3D" parent="Head/Camera3D"]
+script = ExtResource("3_ee483")
+
+[node name="pistol_1" parent="Head/Camera3D/WeaponManager" instance=ExtResource("4_apwcg")]
+transform = Transform3D(10, 0, 0, 0, -4.37114e-07, 10, 0, -10, -4.37114e-07, 0.223, -0.210805, -0.43)
+visible = false
+
+[node name="sniper_1" parent="Head/Camera3D/WeaponManager" instance=ExtResource("5_7xrco")]
+transform = Transform3D(9.95754, -0.920578, -4.02397e-08, 0, -4.37114e-07, 10, -0.920578, -9.95754, -4.35258e-07, 2.08165e-12, -1, 2.08165e-12)
+visible = false
+
+[node name="Axe" parent="Head/Camera3D/WeaponManager" instance=ExtResource("5_6chyl")]
+transform = Transform3D(-3.57507e-06, 1, -7.50026e-08, -0.85793, -3.1057e-06, -0.513766, -0.513766, -1.77241e-06, 0.85793, 0.0641758, -0.0771548, -0.40935)
+visible = false
+
+[node name="WeaponSwitching" type="AnimationPlayer" parent="Head/Camera3D/WeaponManager"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_d8ctd")
+}
+
+[node name="Pistol" parent="Head/Camera3D/WeaponManager" instance=ExtResource("2_weupy")]
+transform = Transform3D(1, -4.02216e-24, 0, -4.02216e-24, 1, 0, 0, 0, 1, 0.18, -0.2, -0.455)
+visible = false
+
+[node name="subfusil_8" parent="Head/Camera3D/WeaponManager" instance=ExtResource("8_8klht")]
+transform = Transform3D(9.99391, 0.348995, 1.52551e-08, -1.5246e-22, -4.37114e-07, 10, 0.348995, -9.99391, -4.36848e-07, 2.08165e-12, -1, 2.08165e-12)
+visible = false
+
+[node name="Pistol2" parent="Head/Camera3D/WeaponManager" instance=ExtResource("2_weupy")]
+transform = Transform3D(1, -4.02216e-24, 0, -4.02216e-24, 1, 0, 0, 0, 1, -0.18, -0.2, -0.455)
+visible = false
+
+[node name="SteampunkAuto" parent="Head/Camera3D/WeaponManager" instance=ExtResource("3_mnww5")]
+transform = Transform3D(0.02, 2.17342e-25, 1.68766e-17, 7.54768e-26, 0.02, -1.5592e-25, 0, 0, 0.02, 0.165, -0.241, -0.466)
+visible = false
+
+[editable path="Head/Camera3D/WeaponManager/subfusil_8"]

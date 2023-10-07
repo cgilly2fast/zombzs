@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bovwvrkiruiat"
-path="res://.godot/imported/motion_frame.png-f0872138b3608cb1b52d6aea20df9f53.ctex"
+path="res://.godot/imported/motion_frame.png-9de9ce804cbe9c1e551304fef14b5bcc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Addons/simplegrasstextured/images/motion_frame.png"
-dest_files=["res://.godot/imported/motion_frame.png-f0872138b3608cb1b52d6aea20df9f53.ctex"]
+source_file="res://addons/simplegrasstextured/images/motion_frame.png"
+dest_files=["res://.godot/imported/motion_frame.png-9de9ce804cbe9c1e551304fef14b5bcc.ctex"]
 
 [params]
 

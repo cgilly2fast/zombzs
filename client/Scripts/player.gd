@@ -17,7 +17,7 @@ const BOB_FREQ =2.0
 const BOB_AMP = .08
 var t_bob = 0.0
 
-const BASE_FOV = 75
+const BASE_FOV = 90
 const FOV_CHANGE = 1.5
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -38,7 +38,7 @@ var can_shoot = true
 signal game_over
 var playing = true
 
-@onready var weapon_switching = $Head/Camera3D/WeaponSwitching
+@onready var weapon_switching = $Head/Camera3D/WeaponManager/WeaponSwitching
 
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
@@ -47,25 +47,25 @@ var playing = true
 @onready var hit_rect = $Head/Camera3D/HitRect
 @onready var aim_ray_end = $Head/Camera3D/AimRayEnd
 
-@onready var gun_anim = $Head/Camera3D/Pistol/AnimationPlayer
-@onready var gun_barrel = $Head/Camera3D/Pistol/RayCast3D
-@onready var gun_anim2 = $Head/Camera3D/Pistol2/AnimationPlayer
-@onready var gun_barrel2 = $Head/Camera3D/Pistol2/RayCast3D
-@onready var pistol = $Head/Camera3D/Pistol
-@onready var pistol2 = $Head/Camera3D/Pistol2
+@onready var gun_anim = $Head/Camera3D/WeaponManager/Pistol/AnimationPlayer
+@onready var gun_barrel = $Head/Camera3D/WeaponManager/Pistol/RayCast3D
+@onready var gun_anim2 = $Head/Camera3D/WeaponManager/Pistol2/AnimationPlayer
+@onready var gun_barrel2 = $Head/Camera3D/WeaponManager/Pistol2/RayCast3D
+@onready var pistol = $Head/Camera3D/WeaponManager/Pistol
+@onready var pistol2 = $Head/Camera3D/WeaponManager/Pistol2
 
-@onready var auto_anim = $Head/Camera3D/SteampunkAuto/AnimationPlayer
-@onready var auto_gun = $Head/Camera3D/SteampunkAuto
-@onready var auto_barrel = $Head/Camera3D/SteampunkAuto/Barrel
+@onready var auto_anim = $Head/Camera3D/WeaponManager/SteampunkAuto/AnimationPlayer
+@onready var auto_gun = $Head/Camera3D/WeaponManager/SteampunkAuto
+@onready var auto_barrel = $Head/Camera3D/WeaponManager/SteampunkAuto/Barrel
 
-@onready var melee_weapon = $Head/Camera3D/Axe
+@onready var melee_weapon = $Head/Camera3D/WeaponManager/Axe
 @onready var melee_aim_ray = $Head/Camera3D/MeleeAimRay
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	crosshair.position.x = get_viewport().size.x / 2 - 32
-	crosshair.position.y = get_viewport().size.y / 2 - 32
-	_raise_weapon(weapons.AUTO)
+	crosshair.position.x = get_viewport().size.x / 2 - 64
+	crosshair.position.y = get_viewport().size.y / 2 - 64
+#	_raise_weapon(weapons.AUTO)
 		
 func _unhandled_input(event):
 	if !(event is InputEventMouseMotion) or !playing:
@@ -128,21 +128,22 @@ func _physics_process(delta):
 		
 	
 	if Input.is_action_pressed("shoot") and can_shoot:
-		match weapon:
-			weapons.AUTO:
-				_shoot_auto()
-			weapons.PISTOLS:
-				_shoot_pistols()
+		pass
+#		match weapon:
+#			weapons.AUTO:
+#				_shoot_auto()
+#			weapons.PISTOLS:
+#				_shoot_pistols()
 	
-	if Input.is_action_just_pressed("weapon_one") and weapon != weapons.AUTO:
-		_lower_weapon()
-		await get_tree().create_timer(.3).timeout
-		_raise_weapon(weapons.AUTO)
-		
-	if Input.is_action_just_pressed("weapon_two") and weapon != weapons.PISTOLS:
-		_lower_weapon()
-		await get_tree().create_timer(.3).timeout
-		_raise_weapon(weapons.PISTOLS)
+#	if Input.is_action_just_pressed("weapon_one") and weapon != weapons.AUTO:
+#		_lower_weapon()
+#		await get_tree().create_timer(.3).timeout
+#		_raise_weapon(weapons.AUTO)
+#
+#	if Input.is_action_just_pressed("weapon_two") and weapon != weapons.PISTOLS:
+#		_lower_weapon()
+#		await get_tree().create_timer(.3).timeout
+#		_raise_weapon(weapons.PISTOLS)
 		
 	
 	
@@ -154,7 +155,7 @@ func _melee():
 		return
 		
 	can_shoot = false
-	_lower_weapon(2.5)
+#	_lower_weapon(2.5)
 	await get_tree().create_timer(.1).timeout
 	melee_weapon.visible = true
 	
@@ -171,11 +172,11 @@ func _melee():
 	weapon_switching.play("Melee")
 	await get_tree().create_timer(.1).timeout
 	melee_weapon.visible = false
-	match weapon:
-		weapons.AUTO:
-			_raise_weapon(weapons.AUTO)
-		weapons.PISTOLS:
-			_raise_weapon(weapons.PISTOLS)
+#	match weapon:
+#		weapons.AUTO:
+#			_raise_weapon(weapons.AUTO)
+#		weapons.PISTOLS:
+#			_raise_weapon(weapons.PISTOLS)
 	await get_tree().create_timer(.3).timeout
 	can_shoot = true
 	
