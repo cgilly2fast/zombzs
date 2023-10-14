@@ -20,11 +20,11 @@ func _process(_delta):
 	pass
 
 
-func hit(damage, melee):
+func hit(damage, melee, head, turso):
 	if melee:
 		body_part_hit.emit(damage, HitType.MELEE)
 		return
 	if!melee and head_area:
-		body_part_hit.emit(damage * 1.2, HitType.HEAD)
+		body_part_hit.emit(damage * head, HitType.HEAD)
 		return
-	body_part_hit.emit(damage, HitType.BODY)
+	body_part_hit.emit(damage * turso, HitType.BODY)

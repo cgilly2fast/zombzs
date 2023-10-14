@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3]
+[gd_scene load_steps=10 format=3 uid="uid://dh1olq4wf7eu0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5tkor"]
 resource_name = "texture"

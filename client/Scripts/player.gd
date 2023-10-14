@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+signal player_ready
+
 var speed
 var sprinting = false
 var health = 3 
@@ -61,10 +63,14 @@ var playing = true
 @onready var melee_weapon = $Head/Camera3D/WeaponManager/Axe
 @onready var melee_aim_ray = $Head/Camera3D/MeleeAimRay
 
+@onready var cur_weapon_label = $CanvasGroup/VBoxContainer/HBoxContainer/CurrentWeapon
+@onready var cur_ammo_label = $CanvasGroup/VBoxContainer/HBoxContainer2/CurrentAmmo
+
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	crosshair.position.x = get_viewport().size.x / 2 - 64
 	crosshair.position.y = get_viewport().size.y / 2 - 64
+	player_ready.emit()
 #	_raise_weapon(weapons.AUTO)
 		
 func _unhandled_input(event):
@@ -127,8 +133,8 @@ func _physics_process(delta):
 		_melee()
 		
 	
-	if Input.is_action_pressed("shoot") and can_shoot:
-		pass
+#	if Input.is_action_pressed("shoot") and can_shoot:
+#		pass
 #		match weapon:
 #			weapons.AUTO:
 #				_shoot_auto()
@@ -164,7 +170,7 @@ func _melee():
 		instance.init(auto_barrel.global_position, melee_aim_ray.get_collision_point())
 		var hit_enemy = melee_aim_ray.get_collider().is_in_group("enemy")
 		if hit_enemy:
-			melee_aim_ray.get_collider().hit(150, true)
+			melee_aim_ray.get_collider().hit(150, true, 1, 1)
 		
 		get_parent().add_child(instance)
 		instance.trigger_particles(	melee_aim_ray.get_collision_point(), 
@@ -223,54 +229,38 @@ func _shoot_pistols():
 		else:
 			instance.set_velocity(aim_ray_end.global_position)	
 		
-func _shoot_auto():
-	if auto_anim.is_playing():
-		return
-	
-	auto_anim.play("Shoot")
+func _on_weapon_manager_shoot_bullet(barrel_position: Vector3, damage: int, head: int, turso: int):
 	instance = bullet_trail.instantiate()
 	if !aim_ray.is_colliding():
-		instance.init(auto_barrel.global_position, aim_ray_end.global_position)
+		instance.init(barrel_position, aim_ray_end.global_position)
 		get_parent().add_child(instance)
 		return
 		
-	instance.init(auto_barrel.global_position, aim_ray.get_collision_point())
+	instance.init(barrel_position, aim_ray.get_collision_point())
 	var hit_enemy = aim_ray.get_collider().is_in_group("enemy")
 	if hit_enemy:
-		aim_ray.get_collider().hit(50, false)
+		aim_ray.get_collider().hit(damage, false, head, turso)
 	
 	get_parent().add_child(instance)
 	instance.trigger_particles(	aim_ray.get_collision_point(), 
-						auto_barrel.global_position, hit_enemy)
+						barrel_position, hit_enemy)
 				
 func _player_hit():
 	hit_rect.visible = true
 	await get_tree().create_timer(0.2).timeout
 	hit_rect.visible = false
 	
-func _lower_weapon(speed=1):
-	match weapon:
-		weapons.AUTO:
-			weapon_switching.play("LowerAuto", -1, speed)
-		weapons.PISTOLS:
-			weapon_switching.play("LowerPistols", -1, speed)
-
-func _raise_weapon(new_weapon):
-	can_shoot = false
-	match new_weapon:
-		weapons.AUTO:
-			auto_gun.visible = true
-			pistol.visible = false
-			pistol2.visible = false
-			weapon_switching.play_backwards("LowerAuto")
-		weapons.PISTOLS:
-			auto_gun.visible = false
-			pistol.visible = true
-			pistol2.visible = true
-			weapon_switching.play_backwards("LowerPistols")
-	weapon = new_weapon
-	can_shoot = true
 	
 func regen_health():
 	health += 1
 	
+
+
+func _on_weapon_manager_update_ammo(ammo, reserve):
+	cur_ammo_label.text  = str(ammo) + " / " + str(reserve)
+	
+
+func _on_weapon_manager_weapon_change(name:String):
+	cur_weapon_label.text = name
+
+

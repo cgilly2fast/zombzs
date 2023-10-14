@@ -155,17 +155,10 @@ mesh = SubResource("CapsuleMesh_7se6a")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.701306, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
-transform = Transform3D(1, 2.24476e-23, 0, -4.02216e-24, 1, 2.64698e-23, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+transform = Transform3D(1, -3.48787e-16, 3.48787e-16, 3.48787e-16, 1, -3.48787e-16, -3.48787e-16, 3.48787e-16, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
 fov = 90.0
 near = 0.004
 far = 200.0
-
-[node name="GunAimRay" type="RayCast3D" parent="Head/Camera3D"]
-transform = Transform3D(1, 4.02216e-24, 0, -4.02216e-24, 1, 0, 0, 0, 1, 5.93784e-09, 0, -0.845031)
-visible = false
-target_position = Vector3(2.08165e-12, 1, -100)
-collision_mask = 2
-collide_with_areas = true
 
 [node name="HitRect" type="ColorRect" parent="Head/Camera3D"]
 visible = false
@@ -180,8 +173,14 @@ offset_right = 128.0
 offset_bottom = 128.0
 texture = ExtResource("2_slh5j")
 
+[node name="GunAimRay" type="RayCast3D" parent="Head/Camera3D"]
+transform = Transform3D(1, -8.04431e-24, 0, -8.04431e-24, 1, 0, 0, 0, 1, 5.93784e-09, 0, -0.845031)
+target_position = Vector3(2.08165e-12, 1, -100)
+collision_mask = 2
+collide_with_areas = true
+
 [node name="AimRayEnd" type="Node3D" parent="Head/Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, -101.5)
+transform = Transform3D(1, -8.04431e-24, 0, -8.04431e-24, 1, 0, 0, 0, 1, 1.68729e-12, 0, -101.5)
 
 [node name="MeleeAimRay" type="RayCast3D" parent="Head/Camera3D"]
 transform = Transform3D(30, 1.20665e-22, 0, -1.20665e-22, 30, 0, 0, 0, 3.5, 3.81438e-08, -0.00757277, -0.436314)
@@ -226,5 +225,36 @@ visible = false
 [node name="SteampunkAuto" parent="Head/Camera3D/WeaponManager" instance=ExtResource("3_mnww5")]
 transform = Transform3D(0.02, 2.17342e-25, 1.68766e-17, 7.54768e-26, 0.02, -1.5592e-25, 0, 0, 0.02, 0.165, -0.241, -0.466)
 visible = false
+
+[node name="CanvasGroup" type="CanvasGroup" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasGroup"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasGroup/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasGroup/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Current Weapon"
+
+[node name="CurrentWeapon" type="Label" parent="CanvasGroup/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasGroup/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasGroup/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Current Ammo"
+
+[node name="CurrentAmmo" type="Label" parent="CanvasGroup/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+
+[connection signal="player_ready" from="." to="Head/Camera3D/WeaponManager" method="_on_player_player_ready"]
+[connection signal="shoot_bullet" from="Head/Camera3D/WeaponManager" to="." method="_on_weapon_manager_shoot_bullet"]
+[connection signal="update_ammo" from="Head/Camera3D/WeaponManager" to="." method="_on_weapon_manager_update_ammo"]
+[connection signal="weapon_change" from="Head/Camera3D/WeaponManager" to="." method="_on_weapon_manager_weapon_change"]
 
 [editable path="Head/Camera3D/WeaponManager/subfusil_8"]

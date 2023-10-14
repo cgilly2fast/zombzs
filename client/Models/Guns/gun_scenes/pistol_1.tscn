@@ -88,3 +88,6 @@ skeleton = NodePath("")
 surface_material_override/0 = ExtResource("1_m7ene")
 
 [node name="trigger" type="Node3D" parent="."]
+
+[node name="barrel" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 4.02633e-15, 0, 1.51259e-15, 1, 0, 0.00820765, 0.00208913)
