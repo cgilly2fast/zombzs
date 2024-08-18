@@ -1,11 +1,11 @@
 [gd_scene load_steps=31 format=3 uid="uid://dafm10j5kimf6"]
 
 [ext_resource type="Script" path="res://Scripts/GameOver.gd" id="1_ve3sx"]
-[ext_resource type="FontFile" uid="uid://bi845txyt5at7" path="res://Assests/terror_pro.ttf" id="2_eywte"]
+[ext_resource type="FontFile" uid="uid://wdg2jnjqerh6" path="res://Assets/terror_pro.ttf" id="2_8pdpl"]
 [ext_resource type="Texture2D" uid="uid://dddxw2170eqsj" path="res://UI/homer-loading.png" id="3_av2kv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_grvns"]
-font = ExtResource("2_eywte")
+font = ExtResource("2_8pdpl")
 font_size = 96
 font_color = Color(0.956863, 0, 0.270588, 1)
 
@@ -222,7 +222,7 @@ offset_left = 447.0
 offset_top = 279.0
 offset_right = 697.0
 offset_bottom = 349.0
-theme_override_fonts/font = ExtResource("2_eywte")
+theme_override_fonts/font = ExtResource("2_8pdpl")
 theme_override_font_sizes/font_size = 48
 text = "Play"
 
@@ -234,7 +234,7 @@ offset_top = 396.0
 offset_right = 683.0
 offset_bottom = 466.0
 theme_override_colors/font_color = Color(0.905882, 0, 0.207843, 1)
-theme_override_fonts/font = ExtResource("2_eywte")
+theme_override_fonts/font = ExtResource("2_8pdpl")
 theme_override_font_sizes/font_size = 48
 text = "Quit"
 

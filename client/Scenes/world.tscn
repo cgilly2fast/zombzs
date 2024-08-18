@@ -1,14 +1,14 @@
-[gd_scene load_steps=57 format=3 uid="uid://cmj7u1db0mrio"]
+[gd_scene load_steps=56 format=3 uid="uid://cmj7u1db0mrio"]
 
 [ext_resource type="PackedScene" uid="uid://b68aoi30bgb56" path="res://Models/Road/road.tscn" id="1_800w0"]
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_sw4ey"]
-[ext_resource type="Texture2D" uid="uid://e3eg0p3u5a1m" path="res://Assests/Enviroment/Ground/696.jpg" id="1_wyu41"]
 [ext_resource type="PackedScene" uid="uid://bilnq76jjgi2w" path="res://Models/Crypt/crypt.tscn" id="3_8yd07"]
 [ext_resource type="PackedScene" uid="uid://cluqoku5qqtaa" path="res://Models/Brick Walls/brick_wall.tscn" id="5_5m1fu"]
 [ext_resource type="PackedScene" uid="uid://bpt76x3ehvcad" path="res://Models/Brick Walls/brick_wall_end.tscn" id="6_nl2c0"]
 [ext_resource type="PackedScene" uid="uid://6r0l4vrv3vfm" path="res://Models/Road/bench.tscn" id="7_cgp3i"]
 [ext_resource type="PackedScene" uid="uid://dj2vyov7jevib" path="res://Models/Lights/lightpost_single.tscn" id="7_ra7ks"]
 [ext_resource type="PackedScene" uid="uid://ctlydgmjanx5a" path="res://Models/Road/bench_damaged.tscn" id="8_1qgd3"]
+[ext_resource type="Texture2D" uid="uid://cuubsa3g4h76q" path="res://Assets/696.jpg" id="8_c74r6"]
 [ext_resource type="PackedScene" uid="uid://xg7xifnkk7wy" path="res://Models/Lights/lightpost_double.tscn" id="8_hhxt0"]
 [ext_resource type="PackedScene" uid="uid://c0wlbt527edsh" path="res://Models/Lights/lightpost_all.tscn" id="9_7k380"]
 [ext_resource type="PackedScene" uid="uid://bvx5e7mwgvi6q" path="res://Models/Graves/grave.tscn" id="10_gnjta"]
@@ -33,7 +33,6 @@
 [ext_resource type="Script" path="res://addons/simplegrasstextured/grass.gd" id="31_usqwy"]
 [ext_resource type="PackedScene" uid="uid://can166jfd3ang" path="res://Scenes/Player.tscn" id="33_4g1e4"]
 [ext_resource type="PackedScene" uid="uid://dscq1kfirrj0o" path="res://UI/GameOver.tscn" id="33_hrm5m"]
-[ext_resource type="FontFile" uid="uid://bi845txyt5at7" path="res://Assests/terror_pro.ttf" id="34_0dc5f"]
 [ext_resource type="LabelSettings" uid="uid://crvhldq87scrn" path="res://UI/world.tres" id="36_bdmee"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1c4kf"]
@@ -55,7 +54,7 @@ volumetric_fog_emission = Color(0.466667, 0.286275, 0.352941, 1)
 volumetric_fog_length = 60.0
 volumetric_fog_detail_spread = 2.04906
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4q0m1"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fr33t"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("29_r2ivd")
@@ -90,7 +89,7 @@ _surfaces = [{
 "format": 4123,
 "index_count": 12,
 "index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 3, 0, 1, 0, 0, 0, 4, 0, 5, 0, 6, 0, 7, 0, 5, 0, 4, 0),
-"material": SubResource("ShaderMaterial_4q0m1"),
+"material": SubResource("ShaderMaterial_fr33t"),
 "primitive": 3,
 "vertex_count": 8,
 "vertex_data": PackedByteArray(0, 0, 0, 191, 0, 0, 128, 63, 0, 0, 0, 0, 255, 127, 255, 127, 0, 0, 0, 63, 0, 0, 0, 0, 0, 0, 0, 0, 255, 127, 255, 127, 0, 0, 0, 191, 0, 0, 0, 0, 0, 0, 0, 0, 255, 127, 255, 127, 0, 0, 0, 63, 0, 0, 128, 63, 0, 0, 0, 0, 255, 127, 255, 127, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 191, 0, 0, 255, 127, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 63, 0, 0, 255, 127, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 191, 0, 0, 255, 127, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 63, 0, 0, 255, 127)
@@ -108,9 +107,8 @@ polygons = [PackedInt32Array(0, 2, 1), PackedInt32Array(4, 3, 5), PackedInt32Arr
 agent_radius = 0.4
 agent_max_slope = 60.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yve0f"]
-albedo_texture = ExtResource("1_wyu41")
-uv1_triplanar = true
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sdqgh"]
+albedo_texture = ExtResource("8_c74r6")
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_loey0"]
 plane = Plane(2.08165e-12, 1, 2.08165e-12, 2.08165e-12)
@@ -121,7 +119,6 @@ emission = Color(0.8, 0.380392, 0.211765, 1)
 emission_energy_multiplier = 4.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_xix7n"]
-font = ExtResource("34_0dc5f")
 font_size = 65
 font_color = Color(0.768627, 0, 0.145098, 1)
 shadow_size = 11
@@ -300,14 +297,12 @@ tracks/3/keys = {
 }
 
 [sub_resource type="LabelSettings" id="LabelSettings_b4n5q"]
-font = ExtResource("34_0dc5f")
 font_size = 65
 shadow_size = 11
 shadow_color = Color(0.0901961, 0.0901961, 0.0901961, 0)
 shadow_offset = Vector2(20, 20)
 
 [sub_resource type="LabelSettings" id="LabelSettings_hsf36"]
-font = ExtResource("34_0dc5f")
 font_size = 65
 font_color = Color(0.768627, 0, 0.145098, 1)
 shadow_size = 11
@@ -993,7 +988,7 @@ navigation_mesh = SubResource("NavigationMesh_4ol1w")
 
 [node name="Ground" type="CSGBox3D" parent="Map/NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
-material_override = SubResource("StandardMaterial3D_yve0f")
+material_override = SubResource("StandardMaterial3D_sdqgh")
 size = Vector3(120, 0.002, 120)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Map/NavigationRegion3D/Ground"]
