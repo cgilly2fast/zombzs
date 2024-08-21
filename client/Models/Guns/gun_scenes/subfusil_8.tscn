@@ -1,4 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://c0jbaftfgukso"]
+[gd_scene load_steps=11 format=3 uid="uid://c0jbaftfgukso"]
+
+[ext_resource type="Texture2D" uid="uid://c6r4hk3anxal2" path="res://Assets/GunCamo/391.jpg" id="1_w2dhy"]
+[ext_resource type="Material" uid="uid://c5ekpv1qstkft" path="res://Models/Guns/Metal2.tres" id="1_wwqjf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iwibc"]
 resource_name = "texture"
@@ -36,6 +39,9 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ul4wf")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wxxln"]
+albedo_texture = ExtResource("1_w2dhy")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_ijhcb"]
 _surfaces = [{
@@ -101,16 +107,19 @@ shadow_mesh = SubResource("ArrayMesh_a5kf2")
 transform = Transform3D(100, 0, 0, 0, -2.38419e-05, 100, 0, -100, -2.38419e-05, 0, 0, 0)
 mesh = SubResource("ArrayMesh_nf4yw")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_wxxln")
 
 [node name="subfusil_charguer_8" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 2.64698e-23, 0, -2.64698e-23, 1, 2.9254e-06, 0.000108135, -0.00258766)
 mesh = SubResource("ArrayMesh_y8u7m")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("1_wwqjf")
 
 [node name="subfusil_scope_8" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 2.64698e-23, 0, -2.64698e-23, 1, 1.53137e-05, -0.00127085, 0.00323705)
 mesh = SubResource("ArrayMesh_a1jxi")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("1_wwqjf")
 
 [node name="trigger" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, -1.58806e-13, 0, -9.76996e-15, 1, 0, -0.00283927, -0.00141596)

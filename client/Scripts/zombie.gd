@@ -20,6 +20,11 @@ const ATTACK_RANGE = 2.5
 @onready var left_hand = $Armature/Skeleton3D/LeftHand/Area3D/CollisionShape3D
 @onready var right_hand = $Armature/Skeleton3D/RightHand/Area3D/CollisionShape3D
 
+@onready var noises = [$ZombieNoisesTrack1, $ZombieNoisesTrack2, $ZombieNoisesTrack3, $ZombieNoisesTrack4]
+var rng = RandomNumberGenerator.new()
+
+@onready var flesh_hit = $FleshHit
+
 enum HitType {
 	BODY,
 	HEAD,
@@ -34,6 +39,8 @@ func  _ready():
 	state_machine = anim_tree.get("parameters/playback")
 	crosshair_hit.position.x = get_viewport().size.x / 2 - 32
 	crosshair_hit.position.y = get_viewport().size.y / 2 - 32
+	var i = rng.randf_range(0, 3)
+	noises[i].play()
 	
 func init(level):
 	if(level < 9):
@@ -59,7 +66,7 @@ func _process(delta):
 		"Run":
 			nav_agent.set_target_position(player.global_transform.origin)
 			var next_nav_point = nav_agent.get_next_path_position()
-			velocity = (next_nav_point - global_transform.origin).normalized() * speed
+			velocity = (next_nav_point - global_transform.origin).normalized() * speed * 1.5
 			rotation.y = lerp_angle(rotation.y, atan2(-velocity.x, -velocity.z), delta * 10.0)
 		"Attack":
 			look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
@@ -80,6 +87,7 @@ func _hit_fiished():
 
 
 func _on_area_3d_body_part_hit(dam, hit_type: HitType):
+	flesh_hit.play()
 	crosshair_hit.visible = true
 	emit_signal("non_lethal_hit")
 	health -= dam

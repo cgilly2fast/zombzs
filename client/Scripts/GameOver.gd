@@ -1,10 +1,11 @@
 extends Control
 
-@onready var loading = $Loading
+@onready var loading = $Control/Loading
 @onready var play = $Play
 @onready var quit = $Quit
 
 @onready var world = load("res://Scenes/world.tscn")
+@onready var start = load("res://UI/Start.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,7 +13,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 func _on_play_pressed():
@@ -26,4 +27,6 @@ func _on_play_pressed():
 
 
 func _on_quit_pressed():
-	get_tree().quit()
+	get_tree().change_scene_to_packed(start)
+	
+	

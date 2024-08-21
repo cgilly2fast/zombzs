@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
 signal player_ready
+signal game_over
 
 var speed
 var sprinting = false
@@ -25,7 +26,7 @@ const FOV_CHANGE = 1.5
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 9.8
 
-var bullet = load("res://Models/Guns/bullet.tscn")
+var laser = load("res://Models/Guns/laser.tscn")
 var bullet_trail = load("res://Scenes/BulletTrail.tscn")
 var instance
 
@@ -35,9 +36,7 @@ enum weapons {
 }
 
 var weapon = weapons.PISTOLS
-var can_shoot = true
 
-signal game_over
 var playing = true
 
 @onready var weapon_switching = $Head/Camera3D/WeaponManager/WeaponSwitching
@@ -60,20 +59,27 @@ var playing = true
 @onready var auto_gun = $Head/Camera3D/WeaponManager/SteampunkAuto
 @onready var auto_barrel = $Head/Camera3D/WeaponManager/SteampunkAuto/Barrel
 
-@onready var melee_weapon = $Head/Camera3D/WeaponManager/Axe
+#@onready var melee_weapon = $Head/Camera3D/WeaponManager/Axe
 @onready var melee_aim_ray = $Head/Camera3D/MeleeAimRay
 
-@onready var cur_weapon_label = $CanvasGroup/VBoxContainer/HBoxContainer/CurrentWeapon
-@onready var cur_ammo_label = $CanvasGroup/VBoxContainer/HBoxContainer2/CurrentAmmo
+@onready var cur_weapon_label = $CurrentWeapon
+@onready var cur_ammo_label = $CurrentAmmo
+@onready var weapon_manager = $Head/Camera3D/WeaponManager
+
+@onready var walking_audio = $Walking
+@onready var running_audio = $Running
+@onready var jump_audio = $Jump
+@onready var punched = $Punched
+@onready var slammed = $Slammed
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	crosshair.position.x = get_viewport().size.x / 2 - 64
-	crosshair.position.y = get_viewport().size.y / 2 - 64
+	weapon_manager.connect("update_ammo",_on_weapon_manager_update_ammo)
+	weapon_manager.connect("weapon_change", _on_weapon_manager_weapon_change)
 	player_ready.emit()
 #	_raise_weapon(weapons.AUTO)
 		
-func _unhandled_input(event):
+func _input(event):
 	if !(event is InputEventMouseMotion) or !playing:
 		return
 	head.rotate_y(-event.relative.x * SENSITIVITY)
@@ -89,15 +95,22 @@ func _physics_process(delta):
 
 	# Handle Jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
+		walking_audio.stop()
+		running_audio.stop()
+		jump_audio.play()
 		velocity.y = JUMP_VELOCITY
+		
 		
 	var input_dir = Input.get_vector("left", "right", "up", "down")
 		
-	#Handle sprint
 	if Input.is_action_just_pressed("sprint") and not sprinting and stamina > 0 and input_dir != Vector2.ZERO:
 		sprinting = true
+		walking_audio.stop()
+		running_audio.play()
+		
 	elif (Input.is_action_just_pressed("sprint") and sprinting) or stamina <= 0 or input_dir == Vector2.ZERO:
 		sprinting = false
+		running_audio.stop()
 	
 	if sprinting:
 		speed = SPRINT_SPEED
@@ -106,17 +119,19 @@ func _physics_process(delta):
 		speed = WALK_SPEED
 		if stamina < 80:
 			stamina += .7
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 
 	var direction = (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if is_on_floor():
 		if direction:
+			if !walking_audio.playing and !sprinting:
+				walking_audio.play()
 			velocity.x = direction.x * speed
 			velocity.z = direction.z * speed
 		else:
 			velocity.x = lerp(velocity.x, direction.x * speed, delta*7.0)
 			velocity.z = lerp(velocity.z, direction.z * speed, delta*7.0)
+			if abs(velocity.x) < .2 and abs(velocity.z) < .2:
+				walking_audio.stop()
 	else: 
 		velocity.x = lerp(velocity.x, direction.x * speed, delta*3.0)
 		velocity.z = lerp(velocity.z, direction.z * speed, delta*3.0)
@@ -129,62 +144,8 @@ func _physics_process(delta):
 	
 	camera.fov = lerp(camera.fov, target_fov, delta * 8.0)
 	
-	if Input.is_action_pressed("melee") and can_shoot:
-		_melee()
-		
-	
-#	if Input.is_action_pressed("shoot") and can_shoot:
-#		pass
-#		match weapon:
-#			weapons.AUTO:
-#				_shoot_auto()
-#			weapons.PISTOLS:
-#				_shoot_pistols()
-	
-#	if Input.is_action_just_pressed("weapon_one") and weapon != weapons.AUTO:
-#		_lower_weapon()
-#		await get_tree().create_timer(.3).timeout
-#		_raise_weapon(weapons.AUTO)
-#
-#	if Input.is_action_just_pressed("weapon_two") and weapon != weapons.PISTOLS:
-#		_lower_weapon()
-#		await get_tree().create_timer(.3).timeout
-#		_raise_weapon(weapons.PISTOLS)
-		
-	
-	
-			
 	move_and_slide()
-
-func _melee():
-	if weapon_switching.is_playing():
-		return
-		
-	can_shoot = false
-#	_lower_weapon(2.5)
-	await get_tree().create_timer(.1).timeout
-	melee_weapon.visible = true
 	
-	if melee_aim_ray.is_colliding():
-		var instance = bullet_trail.instantiate()		
-		instance.init(auto_barrel.global_position, melee_aim_ray.get_collision_point())
-		var hit_enemy = melee_aim_ray.get_collider().is_in_group("enemy")
-		if hit_enemy:
-			melee_aim_ray.get_collider().hit(150, true, 1, 1)
-		
-		get_parent().add_child(instance)
-		instance.trigger_particles(	melee_aim_ray.get_collision_point(), 
-							melee_aim_ray.get_collision_point(), hit_enemy)
-	weapon_switching.play("Melee")
-	await get_tree().create_timer(.1).timeout
-	melee_weapon.visible = false
-#	match weapon:
-#		weapons.AUTO:
-#			_raise_weapon(weapons.AUTO)
-#		weapons.PISTOLS:
-#			_raise_weapon(weapons.PISTOLS)
-	await get_tree().create_timer(.3).timeout
-	can_shoot = true
 	
 func  _headbob(time) -> Vector3:
 	var pos = Vector3.ZERO
@@ -195,13 +156,22 @@ func  _headbob(time) -> Vector3:
 func hit(dir):
 	if !playing:
 		return
+	punched.play()
+	hit_rect.visible = true
 	health -= 1
 	get_tree().create_timer(5).timeout.connect(regen_health)
-	_player_hit()
+	
+	
+	await get_tree().create_timer(0.2).timeout
+	
+	hit_rect.visible = false
 	if is_on_floor():
 		velocity += (dir * HEAD_STAGGER)
 	if health <= 0:
+		slammed.play()
 		playing = false
+		walking_audio.stop()
+		running_audio.stop()
 		pistol.visible = false
 		pistol2.visible = false
 		auto_gun.visible = false
@@ -209,27 +179,9 @@ func hit(dir):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		emit_signal("game_over")
 	
-func _shoot_pistols():
-	if !gun_anim.is_playing():
-		gun_anim.play("Shoot")
-		instance = bullet.instantiate()
-		instance.position = gun_barrel.global_position
-		get_parent().add_child(instance)
-		if aim_ray.is_colliding():
-			instance.set_velocity(aim_ray.get_collision_point())
-		else:
-			instance.set_velocity(aim_ray_end.global_position)
-	if !gun_anim2.is_playing():
-		gun_anim2.play("Shoot")
-		instance = bullet.instantiate()
-		instance.position = gun_barrel2.global_position
-		get_parent().add_child(instance)
-		if aim_ray.is_colliding():
-			instance.set_velocity(aim_ray.get_collision_point())
-		else:
-			instance.set_velocity(aim_ray_end.global_position)	
 		
-func _on_weapon_manager_shoot_bullet(barrel_position: Vector3, damage: int, head: int, turso: int):
+func _on_weapon_manager_shoot_bullet(barrel_position: Vector3, damage: int, head_damage: int, turso: int):
+	
 	instance = bullet_trail.instantiate()
 	if !aim_ray.is_colliding():
 		instance.init(barrel_position, aim_ray_end.global_position)
@@ -239,16 +191,34 @@ func _on_weapon_manager_shoot_bullet(barrel_position: Vector3, damage: int, head
 	instance.init(barrel_position, aim_ray.get_collision_point())
 	var hit_enemy = aim_ray.get_collider().is_in_group("enemy")
 	if hit_enemy:
-		aim_ray.get_collider().hit(damage, false, head, turso)
+		aim_ray.get_collider().hit(damage, false, head_damage, turso)
 	
 	get_parent().add_child(instance)
 	instance.trigger_particles(	aim_ray.get_collision_point(), 
 						barrel_position, hit_enemy)
-				
-func _player_hit():
-	hit_rect.visible = true
-	await get_tree().create_timer(0.2).timeout
-	hit_rect.visible = false
+						
+func _on_weapon_manager_shoot_laser(barrel_position: Vector3, _damage: int, _head_damage: int, _turso: int):
+	instance = laser.instantiate()
+	instance.position = barrel_position
+	get_parent().add_child(instance)
+	if aim_ray.is_colliding():
+			instance.set_velocity(aim_ray.get_collision_point())
+	else:
+		instance.set_velocity(aim_ray_end.global_position)
+		
+func _on_weapon_manager_do_melee():
+	if melee_aim_ray.is_colliding():
+		instance = bullet_trail.instantiate()	
+
+		instance.init(auto_barrel.global_position, melee_aim_ray.get_collision_point())
+		var hit_enemy = melee_aim_ray.get_collider().is_in_group("enemy")
+		if hit_enemy:
+			melee_aim_ray.get_collider().hit(150, true, 1, 1)
+		
+		get_parent().add_child(instance)
+		instance.trigger_particles(	melee_aim_ray.get_collision_point(), 
+							auto_barrel.global_position, hit_enemy)
+	
 	
 	
 func regen_health():
@@ -256,11 +226,11 @@ func regen_health():
 	
 
 
-func _on_weapon_manager_update_ammo(ammo, reserve):
-	cur_ammo_label.text  = str(ammo) + " / " + str(reserve)
+func _on_weapon_manager_update_ammo(ammo:int, reserve: int):
+	cur_ammo_label.text = str(ammo) + " / " + str(reserve)
 	
 
-func _on_weapon_manager_weapon_change(name:String):
-	cur_weapon_label.text = name
-
+func _on_weapon_manager_weapon_change(weapon_name: String):
+	cur_weapon_label.text = weapon_name
+	
 

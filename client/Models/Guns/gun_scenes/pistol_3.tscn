@@ -1,4 +1,7 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=9 format=3 uid="uid://bwh8de7nx0wym"]
+
+[ext_resource type="Texture2D" uid="uid://ba3r086yx4rqi" path="res://Assets/GunCamo/244.jpg" id="1_rkorl"]
+[ext_resource type="Material" uid="uid://dsbxaujpenxuh" path="res://Models/Guns/Metal3.tres" id="2_d0ecc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oa6is"]
 resource_name = "texture"
@@ -37,6 +40,12 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_cc25i")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j8hds"]
+albedo_texture = ExtResource("1_rkorl")
+metallic = 1.0
+metallic_texture = ExtResource("1_rkorl")
+roughness = 0.5
+
 [sub_resource type="ArrayMesh" id="ArrayMesh_f4137"]
 _surfaces = [{
 "aabb": AABB(-0.000588079, -0.00122811, -0.00224216, 0.00117616, 0.00246625, 0.00449408),
@@ -71,8 +80,16 @@ shadow_mesh = SubResource("ArrayMesh_f4137")
 transform = Transform3D(100, 0, 0, 0, -2.38419e-05, 100, 0, -100, -2.38419e-05, 0, 0, 0)
 mesh = SubResource("ArrayMesh_rc3k1")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_j8hds")
 
 [node name="pistol_charger_3" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 2.64698e-23, 0, -2.64698e-23, 1, -1.15484e-08, -0.00259321, -0.00265515)
 mesh = SubResource("ArrayMesh_i7mps")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_d0ecc")
+
+[node name="trigger" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -2.49756e-13, 0, -9.76996e-15, 1, 0, -0.00010216, 9.22453e-05)
+
+[node name="barrel" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -1.76996e-13, 0, -9.76996e-15, 1, 0, 0.00683176, 0.00189922)

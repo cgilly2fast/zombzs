@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://can166jfd3ang"]
+[gd_scene load_steps=54 format=3 uid="uid://can166jfd3ang"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_ion2u"]
 [ext_resource type="Texture2D" uid="uid://c1nocny7rsfe0" path="res://Textures/crosshair011.png" id="2_slh5j"]
@@ -9,6 +9,42 @@
 [ext_resource type="PackedScene" uid="uid://dfb4uibgnwvb3" path="res://Models/Melee/Axe.tscn" id="5_6chyl"]
 [ext_resource type="PackedScene" uid="uid://gdi4chjf64of" path="res://Models/Guns/gun_scenes/sniper_1.tscn" id="5_7xrco"]
 [ext_resource type="PackedScene" uid="uid://c0jbaftfgukso" path="res://Models/Guns/gun_scenes/subfusil_8.tscn" id="8_8klht"]
+[ext_resource type="AudioStream" uid="uid://du1gbidnhawld" path="res://Assets/heaveyGunShot.mp3" id="10_nxty1"]
+[ext_resource type="AudioStream" uid="uid://bv2hrpv2dwt7j" path="res://Assets/laserShot.mp3" id="11_4shbh"]
+[ext_resource type="PackedScene" uid="uid://3h5hds0tkwjw" path="res://Models/Guns/gun_scenes/fusil_1.tscn" id="12_ea2kc"]
+[ext_resource type="AudioStream" uid="uid://b8gbq6xq7pfg1" path="res://Assets/1911-reload-6248.mp3" id="12_rglh6"]
+[ext_resource type="AudioStream" uid="uid://bsuiw6stdtw8l" path="res://Assets/empty_shot.mp3" id="12_vcvfg"]
+[ext_resource type="PackedScene" uid="uid://di2i2pp6psjxl" path="res://Models/Guns/gun_scenes/fusil_2.tscn" id="13_x43co"]
+[ext_resource type="PackedScene" uid="uid://cp7ax3hvnbu7u" path="res://Models/Guns/gun_scenes/fusil_3.tscn" id="14_ryuep"]
+[ext_resource type="PackedScene" uid="uid://ca2rgi0124f14" path="res://Models/Guns/gun_scenes/fusil_4.tscn" id="15_cn63j"]
+[ext_resource type="PackedScene" uid="uid://btnwn34k3g61" path="res://Models/Guns/gun_scenes/fusil_5.tscn" id="16_hi6yf"]
+[ext_resource type="PackedScene" uid="uid://c8o0al46mrrc5" path="res://Models/Guns/gun_scenes/fusil_6.tscn" id="17_0q815"]
+[ext_resource type="PackedScene" uid="uid://d04xadeg0tuah" path="res://Models/Guns/gun_scenes/fusil_7.tscn" id="18_ly1bm"]
+[ext_resource type="PackedScene" uid="uid://bkv053p74ipys" path="res://Models/Guns/gun_scenes/subfusil_1.tscn" id="19_mryno"]
+[ext_resource type="PackedScene" uid="uid://3nn5kqwfdx3n" path="res://Models/Guns/gun_scenes/subfusil_2.tscn" id="20_6avg0"]
+[ext_resource type="PackedScene" uid="uid://d2yuqvrrk6531" path="res://Models/Guns/gun_scenes/subfusil_3.tscn" id="21_akuny"]
+[ext_resource type="PackedScene" uid="uid://0hisrvrf5glv" path="res://Models/Guns/gun_scenes/subfusil_4.tscn" id="22_k4rw7"]
+[ext_resource type="PackedScene" uid="uid://c6jen3wfs73kx" path="res://Models/Guns/gun_scenes/subfusil_5.tscn" id="23_fqob8"]
+[ext_resource type="PackedScene" uid="uid://cqhka8ofgm3tf" path="res://Models/Guns/gun_scenes/subfusil_6.tscn" id="24_b214d"]
+[ext_resource type="PackedScene" uid="uid://c36ysbeo50u6f" path="res://Models/Guns/gun_scenes/subfusil_7.tscn" id="25_nhwys"]
+[ext_resource type="PackedScene" uid="uid://px5s5px8n7y" path="res://Models/Guns/gun_scenes/subfusil_9.tscn" id="26_14af2"]
+[ext_resource type="PackedScene" uid="uid://dh1olq4wf7eu0" path="res://Models/Guns/gun_scenes/flamethrower.tscn" id="27_kxoyc"]
+[ext_resource type="PackedScene" uid="uid://fb7mclymvhs5" path="res://Models/Guns/gun_scenes/pistol_2.tscn" id="28_spaws"]
+[ext_resource type="PackedScene" uid="uid://bwh8de7nx0wym" path="res://Models/Guns/gun_scenes/pistol_3.tscn" id="29_x5h1m"]
+[ext_resource type="PackedScene" uid="uid://cb8jm0gj7x3n7" path="res://Models/Guns/gun_scenes/pistol_4.tscn" id="30_758yc"]
+[ext_resource type="PackedScene" uid="uid://d0d388at6tcaf" path="res://Models/Guns/gun_scenes/pistol_5.tscn" id="31_1ulwe"]
+[ext_resource type="PackedScene" uid="uid://dl2p5w7i4kqmo" path="res://Models/Guns/gun_scenes/pistol_6.tscn" id="32_k43n5"]
+[ext_resource type="PackedScene" uid="uid://b8qufhv6pccio" path="res://Models/Guns/gun_scenes/shotgun_1.tscn" id="33_m0x8n"]
+[ext_resource type="PackedScene" uid="uid://bxp35fe2xbehq" path="res://Models/Guns/gun_scenes/shotgun_2.tscn" id="34_pukge"]
+[ext_resource type="PackedScene" uid="uid://cdtywfxxqnj2b" path="res://Models/Guns/gun_scenes/sniper_0.tscn" id="35_md08g"]
+[ext_resource type="PackedScene" uid="uid://capuudowunqaw" path="res://Models/Guns/gun_scenes/sniper_2.tscn" id="36_4thdo"]
+[ext_resource type="AudioStream" uid="uid://bk0217mc2xb55" path="res://Assets/walking.mp3" id="38_a3ou2"]
+[ext_resource type="AudioStream" uid="uid://u5sxe5rtixvk" path="res://Assets/running.mp3" id="38_es1ol"]
+[ext_resource type="AudioStream" uid="uid://dh3ueh7ic1ihr" path="res://Assets/lower.mp3" id="38_fpdht"]
+[ext_resource type="AudioStream" uid="uid://copx7pkk0kxws" path="res://Assets/melee_swing.mp3" id="39_ru8we"]
+[ext_resource type="AudioStream" uid="uid://d1vjm725agukh" path="res://Assets/jump1.mp3" id="40_3n1bm"]
+[ext_resource type="AudioStream" uid="uid://ctka08do1lk7i" path="res://Assets/punch.mp3" id="41_6rxei"]
+[ext_resource type="AudioStream" uid="uid://dssdk30d4kjw" path="res://Assets/slam.mp3" id="42_y3tav"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4uxpl"]
 
@@ -164,13 +200,24 @@ far = 200.0
 visible = false
 offset_left = -163.0
 offset_top = -124.0
-offset_right = 1310.0
-offset_bottom = 773.0
+offset_right = 16793.0
+offset_bottom = 9263.0
 color = Color(0.866667, 0.12549, 0.188235, 0.278431)
 
 [node name="Crosshair" type="TextureRect" parent="Head/Camera3D"]
-offset_right = 128.0
-offset_bottom = 128.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 texture = ExtResource("2_slh5j")
 
 [node name="GunAimRay" type="RayCast3D" parent="Head/Camera3D"]
@@ -184,7 +231,6 @@ transform = Transform3D(1, -8.04431e-24, 0, -8.04431e-24, 1, 0, 0, 0, 1, 1.68729
 
 [node name="MeleeAimRay" type="RayCast3D" parent="Head/Camera3D"]
 transform = Transform3D(30, 1.20665e-22, 0, -1.20665e-22, 30, 0, 0, 0, 3.5, 3.81438e-08, -0.00757277, -0.436314)
-visible = false
 target_position = Vector3(2.08165e-12, 2.08165e-12, -0.5)
 collision_mask = 2
 collide_with_areas = true
@@ -193,8 +239,7 @@ collide_with_areas = true
 script = ExtResource("3_ee483")
 
 [node name="pistol_1" parent="Head/Camera3D/WeaponManager" instance=ExtResource("4_apwcg")]
-transform = Transform3D(10, 0, 0, 0, -4.37114e-07, 10, 0, -10, -4.37114e-07, 0.223, -0.210805, -0.43)
-visible = false
+transform = Transform3D(10, 0, 0, 0, -4.37114e-07, 10, 0, -10, -4.37114e-07, 2.08165e-12, -1, 2.08165e-12)
 
 [node name="sniper_1" parent="Head/Camera3D/WeaponManager" instance=ExtResource("5_7xrco")]
 transform = Transform3D(9.95754, -0.920578, -4.02397e-08, 0, -4.37114e-07, 10, -0.920578, -9.95754, -4.35258e-07, 2.08165e-12, -1, 2.08165e-12)
@@ -226,35 +271,174 @@ visible = false
 transform = Transform3D(0.02, 2.17342e-25, 1.68766e-17, 7.54768e-26, 0.02, -1.5592e-25, 0, 0, 0.02, 0.165, -0.241, -0.466)
 visible = false
 
-[node name="CanvasGroup" type="CanvasGroup" parent="."]
+[node name="HeaveyGunShot" type="AudioStreamPlayer" parent="Head/Camera3D/WeaponManager"]
+stream = ExtResource("10_nxty1")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasGroup"]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="LaserShot" type="AudioStreamPlayer" parent="Head/Camera3D/WeaponManager"]
+stream = ExtResource("11_4shbh")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasGroup/VBoxContainer"]
-layout_mode = 2
+[node name="EmptyShot" type="AudioStreamPlayer" parent="Head/Camera3D/WeaponManager"]
+stream = ExtResource("12_vcvfg")
 
-[node name="Label" type="Label" parent="CanvasGroup/VBoxContainer/HBoxContainer"]
-layout_mode = 2
+[node name="Reload" type="AudioStreamPlayer" parent="Head/Camera3D/WeaponManager"]
+stream = ExtResource("12_rglh6")
+
+[node name="fusil_1" parent="Head/Camera3D/WeaponManager" instance=ExtResource("12_ea2kc")]
+transform = Transform3D(9.99391, 0.348995, 1.52551e-08, -1.5246e-22, -4.37114e-07, 10, 0.348995, -9.99391, -4.36848e-07, 2.08165e-12, -1, 2.08165e-12)
+visible = false
+
+[node name="fusil_2" parent="Head/Camera3D/WeaponManager" instance=ExtResource("13_x43co")]
+transform = Transform3D(9.99391, 0.348995, 1.52551e-08, -1.5246e-22, -4.37114e-07, 10, 0.348995, -9.99391, -4.36848e-07, 2.08165e-12, -1, 2.08165e-12)
+visible = false
+
+[node name="fusil_3" parent="Head/Camera3D/WeaponManager" instance=ExtResource("14_ryuep")]
+transform = Transform3D(9.99391, 0.348995, 1.52551e-08, -1.5246e-22, -4.37114e-07, 10, 0.348995, -9.99391, -4.36848e-07, 2.08165e-12, -1, 2.08165e-12)
+visible = false
+
+[node name="fusil_4" parent="Head/Camera3D/WeaponManager" instance=ExtResource("15_cn63j")]
+transform = Transform3D(9.99391, 0.348995, 1.52551e-08, -1.5246e-22, -4.37114e-07, 10, 0.348995, -9.99391, -4.36848e-07, 2.08165e-12, -1, 2.08165e-12)
+visible = false
+
+[node name="fusil_5" parent="Head/Camera3D/WeaponManager" instance=ExtResource("16_hi6yf")]
+transform = Transform3D(9.99391, 0.348995, 1.52551e-08, -1.5246e-22, -4.37114e-07, 10, 0.348995, -9.99391, -4.36848e-07, 2.08165e-12, -1, 2.08165e-12)
+visible = false
+
+[node name="fusil_6" parent="Head/Camera3D/WeaponManager" instance=ExtResource("17_0q815")]
+transform = Transform3D(9.99391, 0.348995, 1.52551e-08, -1.5246e-22, -4.37114e-07, 10, 0.348995, -9.99391, -4.36848e-07, 2.08165e-12, -1, 2.08165e-12)
+visible = false
+
+[node name="fusil_7" parent="Head/Camera3D/WeaponManager" instance=ExtResource("18_ly1bm")]
+transform = Transform3D(9.99391, 0.348995, 1.52551e-08, -1.5246e-22, -4.37114e-07, 10, 0.348995, -9.99391, -4.36848e-07, 2.08165e-12, -1, 2.08165e-12)
+visible = false
+
+[node name="subfusil_1" parent="Head/Camera3D/WeaponManager" instance=ExtResource("19_mryno")]
+transform = Transform3D(9.99391, 0.348995, 1.52551e-08, -1.5246e-22, -4.37114e-07, 10, 0.348995, -9.99391, -4.36848e-07, 2.08165e-12, -1, 2.08165e-12)
+visible = false
+
+[node name="subfusil_2" parent="Head/Camera3D/WeaponManager" instance=ExtResource("20_6avg0")]
+transform = Transform3D(9.99391, 0.348995, 1.52551e-08, -1.5246e-22, -4.37114e-07, 10, 0.348995, -9.99391, -4.36848e-07, 2.08165e-12, -1, 2.08165e-12)
+visible = false
+
+[node name="subfusil_3" parent="Head/Camera3D/WeaponManager" instance=ExtResource("21_akuny")]
+transform = Transform3D(9.99391, 0.348995, 1.52551e-08, -1.5246e-22, -4.37114e-07, 10, 0.348995, -9.99391, -4.36848e-07, 2.08165e-12, -1, 2.08165e-12)
+visible = false
+
+[node name="subfusil_4" parent="Head/Camera3D/WeaponManager" instance=ExtResource("22_k4rw7")]
+transform = Transform3D(9.99391, 0.348995, 1.52551e-08, -1.5246e-22, -4.37114e-07, 10, 0.348995, -9.99391, -4.36848e-07, 2.08165e-12, -1, 2.08165e-12)
+visible = false
+
+[node name="subfusil_5" parent="Head/Camera3D/WeaponManager" instance=ExtResource("23_fqob8")]
+transform = Transform3D(9.99391, 0.348995, 1.52551e-08, -1.5246e-22, -4.37114e-07, 10, 0.348995, -9.99391, -4.36848e-07, 2.08165e-12, -1, 2.08165e-12)
+visible = false
+
+[node name="subfusil_6" parent="Head/Camera3D/WeaponManager" instance=ExtResource("24_b214d")]
+transform = Transform3D(9.99391, 0.348995, 1.52551e-08, -1.5246e-22, -4.37114e-07, 10, 0.348995, -9.99391, -4.36848e-07, 2.08165e-12, -1, 2.08165e-12)
+visible = false
+
+[node name="subfusil_7" parent="Head/Camera3D/WeaponManager" instance=ExtResource("25_nhwys")]
+transform = Transform3D(9.99391, 0.348995, 1.52551e-08, -1.5246e-22, -4.37114e-07, 10, 0.348995, -9.99391, -4.36848e-07, 2.08165e-12, -1, 2.08165e-12)
+visible = false
+
+[node name="subfusil_9" parent="Head/Camera3D/WeaponManager" instance=ExtResource("26_14af2")]
+transform = Transform3D(9.99391, 0.348995, 1.52551e-08, -1.5246e-22, -4.37114e-07, 10, 0.348995, -9.99391, -4.36848e-07, 2.08165e-12, -1, 2.08165e-12)
+visible = false
+
+[node name="flamethrower" parent="Head/Camera3D/WeaponManager" instance=ExtResource("27_kxoyc")]
+transform = Transform3D(9.99391, 0.348995, 1.52551e-08, -1.5246e-22, -4.37114e-07, 10, 0.348995, -9.99391, -4.36848e-07, 2.08165e-12, -1, 2.08165e-12)
+visible = false
+
+[node name="pistol_2" parent="Head/Camera3D/WeaponManager" instance=ExtResource("28_spaws")]
+transform = Transform3D(9.99391, 0.348995, 1.52551e-08, -1.5246e-22, -4.37114e-07, 10, 0.348995, -9.99391, -4.36848e-07, 2.08165e-12, -1, 2.08165e-12)
+visible = false
+
+[node name="pistol_3" parent="Head/Camera3D/WeaponManager" instance=ExtResource("29_x5h1m")]
+transform = Transform3D(9.99391, 0.348995, 1.52551e-08, -1.5246e-22, -4.37114e-07, 10, 0.348995, -9.99391, -4.36848e-07, 2.08165e-12, -1, 2.08165e-12)
+visible = false
+
+[node name="pistol_4" parent="Head/Camera3D/WeaponManager" instance=ExtResource("30_758yc")]
+transform = Transform3D(9.99391, 0.348995, 1.52551e-08, -1.5246e-22, -4.37114e-07, 10, 0.348995, -9.99391, -4.36848e-07, 2.08165e-12, -1, 2.08165e-12)
+visible = false
+
+[node name="pistol_5" parent="Head/Camera3D/WeaponManager" instance=ExtResource("31_1ulwe")]
+transform = Transform3D(9.99391, 0.348995, 1.52551e-08, -1.5246e-22, -4.37114e-07, 10, 0.348995, -9.99391, -4.36848e-07, 2.08165e-12, -1, 2.08165e-12)
+visible = false
+
+[node name="pistol_6" parent="Head/Camera3D/WeaponManager" instance=ExtResource("32_k43n5")]
+transform = Transform3D(9.99391, 0.348995, 1.52551e-08, -1.5246e-22, -4.37114e-07, 10, 0.348995, -9.99391, -4.36848e-07, 2.08165e-12, -1, 2.08165e-12)
+visible = false
+
+[node name="shotgun_1" parent="Head/Camera3D/WeaponManager" instance=ExtResource("33_m0x8n")]
+transform = Transform3D(9.99391, 0.348995, 1.52551e-08, -1.5246e-22, -4.37114e-07, 10, 0.348995, -9.99391, -4.36848e-07, 2.08165e-12, -1, 2.08165e-12)
+visible = false
+
+[node name="shotgun_2" parent="Head/Camera3D/WeaponManager" instance=ExtResource("34_pukge")]
+transform = Transform3D(9.99391, 0.348995, 1.52551e-08, -1.5246e-22, -4.37114e-07, 10, 0.348995, -9.99391, -4.36848e-07, 2.08165e-12, -1, 2.08165e-12)
+visible = false
+
+[node name="sniper_0" parent="Head/Camera3D/WeaponManager" instance=ExtResource("35_md08g")]
+transform = Transform3D(9.99391, 0.348995, 1.52551e-08, -1.5246e-22, -4.37114e-07, 10, 0.348995, -9.99391, -4.36848e-07, 2.08165e-12, -1, 2.08165e-12)
+visible = false
+
+[node name="sniper_2" parent="Head/Camera3D/WeaponManager" instance=ExtResource("36_4thdo")]
+transform = Transform3D(9.99391, 0.348995, 1.52551e-08, -1.5246e-22, -4.37114e-07, 10, 0.348995, -9.99391, -4.36848e-07, 2.08165e-12, -1, 2.08165e-12)
+visible = false
+
+[node name="Lower" type="AudioStreamPlayer" parent="Head/Camera3D/WeaponManager"]
+stream = ExtResource("38_fpdht")
+volume_db = -3.0
+
+[node name="MeleeSwing" type="AudioStreamPlayer" parent="Head/Camera3D/WeaponManager"]
+stream = ExtResource("39_ru8we")
+volume_db = -3.0
+
+[node name="Label" type="Label" parent="."]
+offset_left = 10.0
+offset_right = 138.0
+offset_bottom = 26.0
 text = "Current Weapon"
 
-[node name="CurrentWeapon" type="Label" parent="CanvasGroup/VBoxContainer/HBoxContainer"]
-layout_mode = 2
+[node name="CurrentWeapon" type="Label" parent="."]
+offset_left = 142.0
+offset_top = 1.0
+offset_right = 143.0
+offset_bottom = 24.0
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasGroup/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CanvasGroup/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
+[node name="Label2" type="Label" parent="."]
+offset_left = 10.0
+offset_top = 25.0
+offset_right = 125.0
+offset_bottom = 51.0
 text = "Current Ammo"
 
-[node name="CurrentAmmo" type="Label" parent="CanvasGroup/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
+[node name="CurrentAmmo" type="Label" parent="."]
+offset_left = 129.0
+offset_top = 26.0
+offset_right = 130.0
+offset_bottom = 49.0
+
+[node name="Running" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("38_es1ol")
+volume_db = 8.0
+
+[node name="Walking" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("38_a3ou2")
+volume_db = 4.0
+
+[node name="Jump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("40_3n1bm")
+volume_db = -3.0
+
+[node name="Punched" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("41_6rxei")
+volume_db = 5.0
+
+[node name="Slammed" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("42_y3tav")
+volume_db = 9.0
 
 [connection signal="player_ready" from="." to="Head/Camera3D/WeaponManager" method="_on_player_player_ready"]
+[connection signal="do_melee" from="Head/Camera3D/WeaponManager" to="." method="_on_weapon_manager_do_melee"]
 [connection signal="shoot_bullet" from="Head/Camera3D/WeaponManager" to="." method="_on_weapon_manager_shoot_bullet"]
-[connection signal="update_ammo" from="Head/Camera3D/WeaponManager" to="." method="_on_weapon_manager_update_ammo"]
-[connection signal="weapon_change" from="Head/Camera3D/WeaponManager" to="." method="_on_weapon_manager_weapon_change"]
+[connection signal="shoot_laser" from="Head/Camera3D/WeaponManager" to="." method="_on_weapon_manager_shoot_laser"]
 
 [editable path="Head/Camera3D/WeaponManager/subfusil_8"]

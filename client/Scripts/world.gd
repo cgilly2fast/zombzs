@@ -8,7 +8,11 @@ extends Node3D
 @onready var level_ui = $UI/Level
 @onready var new_points_ui = $UI/NewPoints
 @onready var anim_player = $AnimationPlayer
-@onready var game_over_ui = $UI/GameOver
+@onready var game_over_ui = $GG/GameOver
+@onready var game_music = $GameMusic
+@onready var pathetic = $Pathetic
+@onready var next_lvl_audio = $NextLevel
+
 
 const SPAWNED_MAX = 24
 
@@ -32,8 +36,9 @@ enum HitType {
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
-	level_up(1)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	level_up(1)
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -70,19 +75,21 @@ func on_zombie_death(kill_area: HitType):
 	total_kills += 1
 	needed_kills -= 1
 	
-	print("total kills: " + str(total_kills))
-	print("needed kills: " + str(needed_kills))
+#	print("total kills: " + str(total_kills))
+#	print("needed kills: " + str(needed_kills))
 	
 	if needed_kills <= 0:
 		level_up(level + 1)
 
 func _kills_till_next_lvl(lvl):
-	return  ceil(0.000054 * lvl**3 + 0.169717 * lvl**2 + 0.541627 *lvl + 16)
+	return  ceil(0.000054 * lvl**3 + 0.169717 * lvl**2 + 0.541627 *lvl + 16) *2
 	
 func on_non_lethal_hit():
 	_update_points(10)
 	
 func level_up(lvl):
+	if lvl > 1:
+		next_lvl_audio.play()
 	spawned = 0
 	level = lvl
 	level_kills = _kills_till_next_lvl(lvl)
@@ -105,3 +112,7 @@ func _update_points(new_points):
 func _on_player_game_over():
 	game_over_ui.visible = true
 	playing = false
+	game_music.stop()
+	await get_tree().create_timer(.4).timeout
+	pathetic.play()
+	

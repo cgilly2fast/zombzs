@@ -1,4 +1,8 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene load_steps=12 format=3 uid="uid://capuudowunqaw"]
+
+[ext_resource type="Texture2D" uid="uid://bldrghagcque6" path="res://Assets/GunCamo/406.jpg" id="1_oowfm"]
+[ext_resource type="Material" uid="uid://dsbxaujpenxuh" path="res://Models/Guns/Metal3.tres" id="2_1yio5"]
+[ext_resource type="Material" uid="uid://b7ecp5kapia83" path="res://Models/IronFence/iron_fence_bar.tres" id="3_uqx27"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_63rg8"]
 resource_name = "texture"
@@ -36,6 +40,12 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_triqf")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mih55"]
+albedo_texture = ExtResource("1_oowfm")
+metallic = 1.0
+metallic_texture = ExtResource("1_oowfm")
+roughness = 0.5
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_at36d"]
 _surfaces = [{
@@ -101,13 +111,22 @@ shadow_mesh = SubResource("ArrayMesh_tik1q")
 transform = Transform3D(100, 0, 0, 0, -2.38419e-05, 100, 0, -100, -2.38419e-05, 0, 0, 0)
 mesh = SubResource("ArrayMesh_ip136")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_mih55")
 
 [node name="sniper_charger_2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 2.64698e-23, 0, -2.64698e-23, 1, 6.78003e-09, -0.00194473, -0.00264256)
 mesh = SubResource("ArrayMesh_shkjq")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_1yio5")
 
 [node name="sniper_scope_2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 2.64698e-23, 0, -2.64698e-23, 1, 1.31875e-08, -0.00570197, 0.00297604)
 mesh = SubResource("ArrayMesh_o4nwc")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("3_uqx27")
+
+[node name="trigger" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -1.95186e-13, 0, -9.76996e-15, 1, 0, -0.00635841, -0.00141596)
+
+[node name="barrel" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -1.22427e-13, 0, -9.76996e-15, 1, 0, 0.0191767, 0.000893755)

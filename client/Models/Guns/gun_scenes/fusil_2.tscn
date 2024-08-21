@@ -1,4 +1,8 @@
-[gd_scene load_steps=10 format=3]
+[gd_scene load_steps=14 format=3 uid="uid://di2i2pp6psjxl"]
+
+[ext_resource type="Texture2D" uid="uid://cdtddtqbue8xi" path="res://Assets/GunCamo/96.jpg" id="1_cg85d"]
+[ext_resource type="Material" uid="uid://cic8ao3irvaok" path="res://Models/Guns/gun_metal.tres" id="2_l32rn"]
+[ext_resource type="Material" uid="uid://bds863cq6gruq" path="res://Models/Guns/Metal.tres" id="3_p2gn1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ln4m"]
 resource_name = "texture"
@@ -36,6 +40,12 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_opof6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u8fvy"]
+albedo_texture = ExtResource("1_cg85d")
+metallic = 1.0
+metallic_texture = ExtResource("1_cg85d")
+roughness = 0.5
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_1ri03"]
 _surfaces = [{
@@ -131,18 +141,28 @@ shadow_mesh = SubResource("ArrayMesh_0akkh")
 transform = Transform3D(100, 0, 0, 0, -2.38419e-05, 100, 0, -100, -2.38419e-05, 0, 0, 0)
 mesh = SubResource("ArrayMesh_hx748")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_u8fvy")
 
 [node name="fusil_charguer_2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 2.64698e-23, 0, -2.64698e-23, 1, 5.54197e-06, 0.000518146, -0.00452796)
 mesh = SubResource("ArrayMesh_1ge77")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_l32rn")
 
 [node name="fusil_scope_2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 2.64698e-23, 0, -2.64698e-23, 1, 5.54048e-06, -0.00179268, 0.0036205)
 mesh = SubResource("ArrayMesh_5io1p")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_l32rn")
 
 [node name="fusil_handle_2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 2.64698e-23, 0, -2.64698e-23, 1, 5.52028e-06, 0.00712517, -0.00314135)
 mesh = SubResource("ArrayMesh_chc83")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("3_p2gn1")
+
+[node name="trigger" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -1.95186e-13, 0, -9.76996e-15, 1, 0, -0.00514452, -0.00141596)
+
+[node name="barrel" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -1.40616e-13, 0, -9.76996e-15, 1, 0, 0.0108755, 0.00191647)

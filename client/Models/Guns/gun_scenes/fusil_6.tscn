@@ -1,4 +1,7 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene load_steps=11 format=3 uid="uid://c8o0al46mrrc5"]
+
+[ext_resource type="Texture2D" uid="uid://dvr7qyxf0r40a" path="res://Assets/GunCamo/97.jpg" id="1_mr6i2"]
+[ext_resource type="Material" uid="uid://b7ecp5kapia83" path="res://Models/IronFence/iron_fence_bar.tres" id="2_6evce"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vn2y5"]
 resource_name = "texture"
@@ -36,6 +39,12 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ciwfy")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6k32p"]
+albedo_texture = ExtResource("1_mr6i2")
+metallic = 1.0
+metallic_texture = ExtResource("1_mr6i2")
+roughness = 0.5
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_3wwaj"]
 _surfaces = [{
@@ -101,13 +110,22 @@ shadow_mesh = SubResource("ArrayMesh_55qm8")
 transform = Transform3D(100, 0, 0, 0, -2.38419e-05, 100, 0, -100, -2.38419e-05, 0, 0, 0)
 mesh = SubResource("ArrayMesh_6danc")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_6k32p")
 
 [node name="fusil_scope_6" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 2.64698e-23, 0, -2.64698e-23, 1, -4.33554e-05, -0.000933092, 0.00284813)
 mesh = SubResource("ArrayMesh_ve0h6")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_6evce")
 
 [node name="fusil_charguer_6" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 2.64698e-23, 0, -2.64698e-23, 1, 1.47962e-05, 0.00175239, -0.00368877)
 mesh = SubResource("ArrayMesh_gmsls")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_6evce")
+
+[node name="trigger" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -2.31566e-13, 0, -9.76996e-15, 1, 0, -0.00309026, -0.000883035)
+
+[node name="barrel" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -1.58806e-13, 0, -9.76996e-15, 1, 0, 0.0183532, 0.000562373)

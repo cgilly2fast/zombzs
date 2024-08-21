@@ -1,12 +1,12 @@
 [gd_scene load_steps=11 format=3 uid="uid://dg25ia7j456g6"]
 
 [ext_resource type="PackedScene" uid="uid://bi8o6wtd07g1j" path="res://Models/Guns/SteampunkRifle.glb" id="1_2dhie"]
-[ext_resource type="Material" path="res://Models/Guns/Metal.tres" id="2_h2ew5"]
-[ext_resource type="Material" path="res://Models/Guns/Wood.tres" id="3_sj65i"]
-[ext_resource type="Material" path="res://Models/Guns/Metal2.tres" id="4_6fhv4"]
-[ext_resource type="Material" path="res://Models/Guns/Metal3.tres" id="5_sii76"]
-[ext_resource type="Material" path="res://Models/Guns/Gem.tres" id="6_dq5wk"]
-[ext_resource type="Material" path="res://Models/Guns/Copper2.tres" id="7_nu5fa"]
+[ext_resource type="Material" uid="uid://bds863cq6gruq" path="res://Models/Guns/Metal.tres" id="2_h2ew5"]
+[ext_resource type="Material" uid="uid://bi0jeon1tbvt0" path="res://Models/Guns/Wood.tres" id="3_sj65i"]
+[ext_resource type="Material" uid="uid://c5ekpv1qstkft" path="res://Models/Guns/Metal2.tres" id="4_6fhv4"]
+[ext_resource type="Material" uid="uid://dsbxaujpenxuh" path="res://Models/Guns/Metal3.tres" id="5_sii76"]
+[ext_resource type="Material" uid="uid://dulfbj71v4s8a" path="res://Models/Guns/Gem.tres" id="6_dq5wk"]
+[ext_resource type="Material" uid="uid://borfcqmqsctyn" path="res://Models/Guns/Copper2.tres" id="7_nu5fa"]
 [ext_resource type="Material" uid="uid://dnductfox057r" path="res://Models/Guns/Copper.tres" id="8_xr48c"]
 
 [sub_resource type="Animation" id="Animation_crhha"]
@@ -34,10 +34,11 @@ _data = {
 [node name="Pistol" instance=ExtResource("1_2dhie")]
 
 [node name="RayCast3D" type="RayCast3D" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, -0.450922)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, -0.882044)
 target_position = Vector3(2.08165e-12, 2.08165e-12, -1)
 
 [node name="Node" parent="." index="1"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
 cast_shadow = 0
 surface_material_override/0 = ExtResource("2_h2ew5")
 surface_material_override/1 = ExtResource("3_sj65i")
@@ -54,3 +55,9 @@ surface_material_override/9 = ExtResource("8_xr48c")
 libraries = {
 "": SubResource("AnimationLibrary_ge3au")
 }
+
+[node name="barrel" type="Node3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, -4.96669e-14, 0, -9.76996e-15, 1, 9.11988e-05, 0.00415269, -0.191204)
+
+[node name="trigger" type="Node3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0304973, 0.00498768, 0.0156982)

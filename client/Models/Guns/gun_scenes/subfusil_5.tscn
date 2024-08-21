@@ -1,4 +1,8 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene load_steps=12 format=3 uid="uid://c6jen3wfs73kx"]
+
+[ext_resource type="Texture2D" uid="uid://bk5vkxmgj0bph" path="res://Assets/GunCamo/55.jpg" id="1_0bc8n"]
+[ext_resource type="Material" uid="uid://dsbxaujpenxuh" path="res://Models/Guns/Metal3.tres" id="2_7x3p8"]
+[ext_resource type="Material" uid="uid://b7ecp5kapia83" path="res://Models/IronFence/iron_fence_bar.tres" id="3_cki4k"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hkb43"]
 resource_name = "texture"
@@ -36,6 +40,12 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_w330l")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5yd6o"]
+albedo_texture = ExtResource("1_0bc8n")
+metallic = 1.0
+metallic_texture = ExtResource("1_0bc8n")
+roughness = 0.5
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_25jda"]
 _surfaces = [{
@@ -101,13 +111,22 @@ shadow_mesh = SubResource("ArrayMesh_2j4yn")
 transform = Transform3D(100, 0, 0, 0, -2.38419e-05, 100, 0, -100, -2.38419e-05, 0, 0, 0)
 mesh = SubResource("ArrayMesh_fybow")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_5yd6o")
 
 [node name="subfusil_charguer_5" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 2.64698e-23, 0, -2.64698e-23, 1, -5.06639e-09, -0.00177357, -0.00367235)
 mesh = SubResource("ArrayMesh_1ko8b")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_7x3p8")
 
 [node name="subfusil_scope_5" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 2.64698e-23, 0, -2.64698e-23, 1, -3.27826e-09, 1.21689e-05, 0.0031427)
 mesh = SubResource("ArrayMesh_h26k6")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("3_cki4k")
+
+[node name="trigger" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -2.31566e-13, 0, -9.76996e-15, 1, 0, -0.00356544, 0.000818418)
+
+[node name="barrel" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -1.22427e-13, 0, -9.76996e-15, 1, 0, 0.0134232, 0.00201094)

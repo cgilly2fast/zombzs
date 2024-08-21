@@ -1,7 +1,8 @@
-[gd_scene load_steps=31 format=3 uid="uid://dafm10j5kimf6"]
+[gd_scene load_steps=34 format=3 uid="uid://dafm10j5kimf6"]
 
-[ext_resource type="Script" path="res://Scripts/GameOver.gd" id="1_ve3sx"]
+[ext_resource type="Script" path="res://Scripts/Start.gd" id="1_qeuec"]
 [ext_resource type="FontFile" uid="uid://wdg2jnjqerh6" path="res://Assets/terror_pro.ttf" id="2_8pdpl"]
+[ext_resource type="AudioStream" uid="uid://doea5rh44a7oq" path="res://Assets/intro.mp3" id="3_0cu66"]
 [ext_resource type="Texture2D" uid="uid://dddxw2170eqsj" path="res://UI/homer-loading.png" id="3_av2kv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_grvns"]
@@ -192,6 +193,15 @@ animations = [{
 "speed": 25.0
 }]
 
+[sub_resource type="LabelSettings" id="LabelSettings_mthgg"]
+font = ExtResource("2_8pdpl")
+font_size = 26
+
+[sub_resource type="Theme" id="Theme_nchag"]
+default_base_scale = 1.0
+default_font = ExtResource("2_8pdpl")
+default_font_size = 38
+
 [node name="Start" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -199,34 +209,90 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ve3sx")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_qeuec")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_0cu66")
+autoplay = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 647.0
+offset_left = -38.0
+offset_top = -18.0
+offset_right = 6016.0
+offset_bottom = 3457.0
 color = Color(0.72549, 0.027451, 0.215686, 0.427451)
 
-[node name="Label" type="Label" parent="."]
+[node name="Play" type="Control" parent="."]
 layout_mode = 1
-offset_left = 348.0
-offset_top = 139.0
-offset_right = 842.0
-offset_bottom = 250.0
-text = "ZOMBIES"
-label_settings = SubResource("LabelSettings_grvns")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Play" type="Button" parent="."]
-layout_mode = 0
-offset_left = 447.0
-offset_top = 279.0
-offset_right = 697.0
-offset_bottom = 349.0
+[node name="Label" type="Label" parent="Play"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -246.0
+offset_top = -179.0
+offset_right = 248.0
+offset_bottom = -68.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "ZOMBZS"
+label_settings = SubResource("LabelSettings_grvns")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Play" type="Button" parent="Play"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -123.0
+offset_top = 65.0
+offset_right = 127.0
+offset_bottom = 135.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_8pdpl")
 theme_override_font_sizes/font_size = 48
 text = "Play"
 
-[node name="Quit" type="Button" parent="."]
+[node name="Controls" type="Button" parent="Play"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.0
+offset_top = 159.0
+offset_right = 126.0
+offset_bottom = 229.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_8pdpl")
+theme_override_font_sizes/font_size = 48
+text = "Controls
+"
+
+[node name="Quit" type="Button" parent="Play"]
 visible = false
 layout_mode = 0
 offset_left = 483.0
@@ -238,12 +304,118 @@ theme_override_fonts/font = ExtResource("2_8pdpl")
 theme_override_font_sizes/font_size = 48
 text = "Quit"
 
-[node name="Loading" type="AnimatedSprite2D" parent="."]
+[node name="Control" type="Control" parent="Play"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -19.0
+offset_top = -18.0
+offset_right = 21.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Loading" type="AnimatedSprite2D" parent="Play/Control"]
 visible = false
-position = Vector2(574, 390)
+position = Vector2(10, 134)
 sprite_frames = SubResource("SpriteFrames_xxmmo")
 animation = &"Loading"
 frame_progress = 0.202099
 
-[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[node name="Label2" type="Label" parent="Play"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.5
+offset_top = -77.0
+offset_right = 102.5
+offset_bottom = -44.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "By Colby Gilbert"
+label_settings = SubResource("LabelSettings_mthgg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Controls" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Controls"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -410.0
+offset_top = -289.0
+offset_right = 358.0
+offset_bottom = 194.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.207843, 0.12549, 0.14902, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Controls"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -385.0
+offset_top = -249.0
+offset_right = 337.0
+offset_bottom = 156.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_nchag")
+text = "W, A, S, D : Movement
+Mouse : Aim/Look
+Space : Jump
+Left-Click : Fire Weapon
+Right-Click :  Sprint
+R : Reload
+E : Melee
+Mouse Wheel Down or 1 : Previous Weapon
+Mouse Wheel Up or 2 : Next Weapon"
+
+[node name="Back" type="Button" parent="Controls"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = 219.0
+offset_right = 90.0
+offset_bottom = 289.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_8pdpl")
+theme_override_font_sizes/font_size = 48
+text = "Back
+"
+
+[connection signal="pressed" from="Play/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Play/Controls" to="." method="_on_controls_pressed"]
+[connection signal="pressed" from="Play/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Controls/Back" to="." method="_on_back_pressed"]
