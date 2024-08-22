@@ -35,6 +35,7 @@ var equiped_weapons: Array = []
 var max_weapons = 3
 
 var index = 0
+var game_over = false
 
 var _weapon_stats =  ImportData.gun_data
 var _weapon_references = {}
@@ -121,10 +122,12 @@ func _ready():
 	
 	
 func _process(_delta):
-	if len(equiped_weapons) == 0:
-		return
 	
-	if (raise_tween and raise_tween.is_running()) or (lower_tween and lower_tween.is_running()):
+	
+	if 	(game_over or 
+		len(equiped_weapons) == 0 or 
+		(raise_tween and raise_tween.is_running()) or 
+		(lower_tween and lower_tween.is_running())):
 		return
 		
 	if Input.is_action_pressed("shoot"):
@@ -136,7 +139,7 @@ func _process(_delta):
 			shoot()
 
 func _input(event):
-	if (raise_tween and raise_tween.is_running()) or (lower_tween and lower_tween.is_running()):
+	if game_over or (raise_tween and raise_tween.is_running()) or (lower_tween and lower_tween.is_running()):
 		return
 	
 	if event.is_action_pressed("reload"):
@@ -343,3 +346,7 @@ func melee():
 	melee_weapon.visible = false
 
 	await get_tree().create_timer(.3).timeout
+
+
+func _on_player_game_over():
+	game_over = true

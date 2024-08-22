@@ -1,9 +1,10 @@
-[gd_scene load_steps=34 format=3 uid="uid://dafm10j5kimf6"]
+[gd_scene load_steps=36 format=3 uid="uid://dafm10j5kimf6"]
 
 [ext_resource type="Script" path="res://Scripts/Start.gd" id="1_qeuec"]
 [ext_resource type="FontFile" uid="uid://wdg2jnjqerh6" path="res://Assets/terror_pro.ttf" id="2_8pdpl"]
 [ext_resource type="AudioStream" uid="uid://doea5rh44a7oq" path="res://Assets/intro.mp3" id="3_0cu66"]
 [ext_resource type="Texture2D" uid="uid://dddxw2170eqsj" path="res://UI/homer-loading.png" id="3_av2kv"]
+[ext_resource type="LabelSettings" uid="uid://xsmrb6djjam4" path="res://UI/leaderboard_title.tres" id="5_02x8p"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_grvns"]
 font = ExtResource("2_8pdpl")
@@ -202,6 +203,10 @@ default_base_scale = 1.0
 default_font = ExtResource("2_8pdpl")
 default_font_size = 38
 
+[sub_resource type="LabelSettings" id="LabelSettings_r8p5q"]
+font = ExtResource("2_8pdpl")
+font_size = 48
+
 [node name="Start" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -246,10 +251,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -246.0
-offset_top = -179.0
-offset_right = 248.0
-offset_bottom = -68.0
+offset_left = -256.0
+offset_top = -255.0
+offset_right = 238.0
+offset_bottom = -144.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "ZOMBZS"
@@ -258,16 +263,17 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Play" type="Button" parent="Play"]
+custom_minimum_size = Vector2(300, 2.08165e-12)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -123.0
-offset_top = 65.0
-offset_right = 127.0
-offset_bottom = 135.0
+offset_left = -158.0
+offset_top = -64.0
+offset_right = 142.0
+offset_bottom = 6.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_8pdpl")
@@ -275,21 +281,41 @@ theme_override_font_sizes/font_size = 48
 text = "Play"
 
 [node name="Controls" type="Button" parent="Play"]
+custom_minimum_size = Vector2(300, 2.08165e-12)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -124.0
-offset_top = 159.0
-offset_right = 126.0
-offset_bottom = 229.0
+offset_left = -159.0
+offset_top = 30.0
+offset_right = 141.0
+offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_8pdpl")
 theme_override_font_sizes/font_size = 48
 text = "Controls
+"
+
+[node name="HighScores" type="Button" parent="Play"]
+custom_minimum_size = Vector2(300, 2.08165e-12)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -159.0
+offset_top = 127.0
+offset_right = 141.0
+offset_bottom = 197.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_8pdpl")
+theme_override_font_sizes/font_size = 48
+text = "High Scores
 "
 
 [node name="Quit" type="Button" parent="Play"]
@@ -311,16 +337,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -19.0
-offset_top = -18.0
-offset_right = 21.0
-offset_bottom = 22.0
+offset_left = -29.0
+offset_top = -94.0
+offset_right = 11.0
+offset_bottom = -54.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Loading" type="AnimatedSprite2D" parent="Play/Control"]
 visible = false
-position = Vector2(10, 134)
+position = Vector2(17, 163)
+scale = Vector2(1.23663, 1.23663)
 sprite_frames = SubResource("SpriteFrames_xxmmo")
 animation = &"Loading"
 frame_progress = 0.202099
@@ -332,10 +359,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -100.5
-offset_top = -77.0
-offset_right = 102.5
-offset_bottom = -44.0
+offset_left = -110.5
+offset_top = -153.0
+offset_right = 92.5
+offset_bottom = -120.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "By Colby Gilbert"
@@ -415,7 +442,116 @@ theme_override_font_sizes/font_size = 48
 text = "Back
 "
 
+[node name="HighScores" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="HighScores"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -322.0
+offset_top = -299.0
+offset_right = 322.0
+offset_bottom = 205.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.207843, 0.12549, 0.14902, 1)
+
+[node name="High Scores" type="Label" parent="HighScores"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -127.5
+offset_top = -284.0
+offset_right = 127.5
+offset_bottom = -226.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "High Scores"
+label_settings = SubResource("LabelSettings_r8p5q")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HighScores"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -262.0
+offset_top = -216.0
+offset_right = 263.0
+offset_bottom = 186.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HighScores/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HighScores/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="NameTitle" type="Label" parent="HighScores/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Name"
+label_settings = ExtResource("5_02x8p")
+
+[node name="LvlTitle" type="Label" parent="HighScores/ScrollContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 2.08165e-12)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Lvl"
+label_settings = ExtResource("5_02x8p")
+
+[node name="PointsTitle" type="Label" parent="HighScores/ScrollContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(120, 2.08165e-12)
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Points"
+label_settings = ExtResource("5_02x8p")
+
+[node name="Back" type="Button" parent="HighScores"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = 218.0
+offset_right = 125.0
+offset_bottom = 288.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_8pdpl")
+theme_override_font_sizes/font_size = 48
+text = "Back
+"
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
 [connection signal="pressed" from="Play/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Play/Controls" to="." method="_on_controls_pressed"]
+[connection signal="pressed" from="Play/HighScores" to="." method="_on_high_scores_pressed"]
 [connection signal="pressed" from="Play/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="Controls/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="HighScores/Back" to="." method="_on_back_pressed"]

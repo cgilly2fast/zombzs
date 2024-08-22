@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://xsmrb6djjam4"]
+
+[ext_resource type="FontFile" uid="uid://wdg2jnjqerh6" path="res://Assets/terror_pro.ttf" id="1_snuw1"]
+
+[resource]
+font = ExtResource("1_snuw1")
+font_size = 32

@@ -13,7 +13,7 @@ extends Node3D
 @onready var pathetic = $Pathetic
 @onready var next_lvl_audio = $NextLevel
 
-
+var url = 'https://postscore-56ueawnosq-uc.a.run.app'
 const SPAWNED_MAX = 24
 
 var zombie = load("res://Models/Zombie/zombie.tscn")
@@ -26,6 +26,7 @@ var needed_kills = 0
 var total_kills = 0
 var points = 0
 var spawned = 0
+var spawning = []
 
 enum HitType {
 	BODY,
@@ -38,7 +39,6 @@ func _ready():
 	randomize()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	level_up(1)
-	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -51,16 +51,25 @@ func _get_random_child(parent_node):
 
 
 func _on_zombie_spawn_timer_timeout():
+	if len(spawning) > 3:
+			spawning.pop_front()
 	if spawned < level_kills and playing:
-		spawned += 1
-		print(spawned)
 		var spawn_point = _get_random_child(spawns).global_position
-		instance = zombie.instantiate()
-		instance.init(level)
-		instance.zombie_death.connect( on_zombie_death)
-		instance.non_lethal_hit.connect(on_non_lethal_hit)
-		instance.position = spawn_point
-		navigation_region.add_child(instance)
+		var spawn_key = str(spawn_point.x) + str(spawn_point.z)
+		if spawning.find(spawn_key) == -1:
+			spawning.append(spawn_key)
+			spawned += 1
+			instance = zombie.instantiate()
+			instance.init(level)
+			instance.zombie_death.connect( on_zombie_death)
+			instance.non_lethal_hit.connect(on_non_lethal_hit)
+			instance.position = spawn_point
+			navigation_region.add_child(instance)
+			
+
+func _on_reset_timer_timeout(spawn_point):
+	spawning[spawn_point] = null
+			
 		
 	
 func on_zombie_death(kill_area: HitType):
@@ -116,3 +125,36 @@ func _on_player_game_over():
 	await get_tree().create_timer(.4).timeout
 	pathetic.play()
 	
+const SECRET_KEY = "42069letsfuckingo"
+	
+
+func create_signed_payload(name: String) -> Dictionary:
+	var payload = {
+		"name": name,
+		"lvl": level,
+		"score": points
+	}
+	
+	var data_to_hash = "%s%d%d%s" % [payload.name, payload.lvl, payload.score, SECRET_KEY]
+	print("Godot - Data to hash: ", data_to_hash)
+	
+	var utf8_data = data_to_hash.to_utf8_buffer()
+	
+	var ctx = HashingContext.new()
+	ctx.start(HashingContext.HASH_SHA256)
+	ctx.update(utf8_data)
+	var hash = ctx.finish()
+	
+	payload["hash"] = hash.hex_encode()
+
+	
+	return payload
+
+func _on_game_over_save_score(name:String):
+	var data_to_send = create_signed_payload(name)
+	var json = JSON.stringify(data_to_send)
+	var headers = PackedStringArray(["Content-Type: application/json", "Origin: https://zombzs.com", 'Sec-Fetch-Mode: no-cors'])
+	$HTTPRequest.request(url, headers, HTTPClient.METHOD_POST, json)
+
+	
+

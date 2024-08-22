@@ -234,3 +234,7 @@ func _on_weapon_manager_weapon_change(weapon_name: String):
 	cur_weapon_label.text = weapon_name
 	
 
+
+
+	
+

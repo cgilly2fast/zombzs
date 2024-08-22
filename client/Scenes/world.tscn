@@ -48,17 +48,17 @@ sky_material = SubResource("ProceduralSkyMaterial_1c4kf")
 [sub_resource type="Environment" id="Environment_uda2b"]
 background_mode = 2
 sky = SubResource("Sky_chkc7")
+ambient_light_color = Color(1, 0, 0, 1)
+ambient_light_energy = 0.0
 tonemap_mode = 2
 fog_enabled = true
 fog_light_color = Color(0.466667, 0.286275, 0.352941, 1)
-fog_density = 0.0255
-volumetric_fog_density = 0.07
+fog_density = 0.0178
+fog_height_density = 7.66748e-16
 volumetric_fog_albedo = Color(0.376471, 0.196078, 0.180392, 1)
 volumetric_fog_emission = Color(0.466667, 0.286275, 0.352941, 1)
-volumetric_fog_length = 60.0
-volumetric_fog_detail_spread = 2.04906
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_v1bn0"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rhmm3"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("29_r2ivd")
@@ -93,7 +93,7 @@ _surfaces = [{
 "format": 4123,
 "index_count": 12,
 "index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 3, 0, 1, 0, 0, 0, 4, 0, 5, 0, 6, 0, 7, 0, 5, 0, 4, 0),
-"material": SubResource("ShaderMaterial_v1bn0"),
+"material": SubResource("ShaderMaterial_rhmm3"),
 "primitive": 3,
 "vertex_count": 8,
 "vertex_data": PackedByteArray(0, 0, 0, 191, 0, 0, 128, 63, 0, 0, 0, 0, 255, 127, 255, 127, 0, 0, 0, 63, 0, 0, 0, 0, 0, 0, 0, 0, 255, 127, 255, 127, 0, 0, 0, 191, 0, 0, 0, 0, 0, 0, 0, 0, 255, 127, 255, 127, 0, 0, 0, 63, 0, 0, 128, 63, 0, 0, 0, 0, 255, 127, 255, 127, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 191, 0, 0, 255, 127, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 63, 0, 0, 255, 127, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 191, 0, 0, 255, 127, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 63, 0, 0, 255, 127)
@@ -117,10 +117,11 @@ albedo_texture = ExtResource("8_c74r6")
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_loey0"]
 plane = Plane(2.08165e-12, 1, 2.08165e-12, 2.08165e-12)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w02qm"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1xk3e"]
+albedo_color = Color(1, 0.462745, 0.34902, 1)
 emission_enabled = true
-emission = Color(0.8, 0.380392, 0.211765, 1)
-emission_energy_multiplier = 4.0
+emission = Color(1, 0.462745, 0.34902, 1)
+emission_energy_multiplier = 3.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_xix7n"]
 font_size = 65
@@ -575,11 +576,9 @@ script = ExtResource("1_sw4ey")
 [node name="Map" type="Node3D" parent="."]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Map"]
-transform = Transform3D(0.901077, 0.0812596, -0.425978, 0, 0.982287, 0.187381, 0.433659, -0.168845, 0.885116, 0, 0, 0)
-light_color = Color(1, 0.482353, 0.439216, 1)
-shadow_enabled = true
+light_color = Color(0.705882, 0.752941, 1, 1)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Map"]
+[node name="WordEnviroment" type="WorldEnvironment" parent="Map"]
 environment = SubResource("Environment_uda2b")
 
 [node name="Roads" type="Node3D" parent="Map"]
@@ -2464,7 +2463,7 @@ transform = Transform3D(-2.99948, 0, 0.0556032, 0, 3, 0, -0.0556028, 0, -2.99948
 transform = Transform3D(-2.99948, 0, 0.0556032, 0, 3, 0, -0.0556028, 0, -2.99948, -56.8135, 3.8147e-06, -36.2478)
 
 [node name="pine95" parent="Map/NavigationRegion3D/Trees" instance=ExtResource("27_oxmir")]
-transform = Transform3D(-2.99948, 0, 0.0556032, 0, 3, 0, -0.0556028, 0, -2.99948, -60.5597, 3.8147e-06, -17.1684)
+transform = Transform3D(-2.99948, 0, 0.0556026, 0, 3, 0, -0.0556026, 0, -2.99948, -60.5597, 3.8147e-06, -17.1684)
 
 [node name="pine96" parent="Map/NavigationRegion3D/Trees" instance=ExtResource("27_oxmir")]
 transform = Transform3D(-2.99948, 0, 0.0556032, 0, 3, 0, -0.0556028, 0, -2.99948, -53.8029, 3.8147e-06, -9.61611)
@@ -2611,11 +2610,487 @@ transform = Transform3D(-1.31134e-07, 1.04636e-15, 3, 1.04636e-15, 3, -1.04636e-
 [node name="brickWall9" parent="Map/NavigationRegion3D/Crypt/Walls" instance=ExtResource("5_5m1fu")]
 transform = Transform3D(-1.31134e-07, 1.04636e-15, 3, 1.04636e-15, 3, -1.04636e-15, -3, 1.04636e-15, -1.31134e-07, 5.94046, 0.00247097, 9.07779)
 
-[node name="Moon" type="CSGSphere3D" parent="Map"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1244.74, 544.918, 2466.33)
-material_override = SubResource("StandardMaterial3D_w02qm")
-cast_shadow = 0
-radius = 100.0
+[node name="Walls" type="Node3D" parent="Map/NavigationRegion3D"]
+
+[node name="brickWall" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, 1.15269, 0.0224425, -60.9702)
+
+[node name="brickWall10" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, -1.90064, 0.0224425, -60.9702)
+
+[node name="brickWall11" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, -4.85171, 0.0224425, -60.9702)
+
+[node name="brickWall2" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, 10.1503, 0.0224425, -60.9702)
+
+[node name="brickWall12" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, 7.09694, 0.0224425, -60.9702)
+
+[node name="brickWall13" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, 4.16075, 0.0224425, -60.9702)
+
+[node name="brickWall3" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, 19.1422, 0.0224425, -60.9702)
+
+[node name="brickWall14" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, 16.0888, 0.0224425, -60.9702)
+
+[node name="brickWall15" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, 13.1378, 0.0224425, -60.9702)
+
+[node name="brickWall4" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.3, 0, 0, 0, 3, 0, 0, 0, 3, 28.2456, 0.0224425, -60.9702)
+
+[node name="brickWall16" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, 25.0864, 0.0224425, -60.9702)
+
+[node name="brickWall17" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, 22.1502, 0.0224425, -60.9702)
+
+[node name="brickWall9" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, 37.4069, 0.0224425, -60.9702)
+
+[node name="brickWall26" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, 34.3536, 0.0224425, -60.9702)
+
+[node name="brickWall27" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, 31.4174, 0.0224425, -60.9702)
+
+[node name="brickWall28" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, 46.3988, 0.0224425, -60.9702)
+
+[node name="brickWall29" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, 43.3455, 0.0224425, -60.9702)
+
+[node name="brickWall30" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, 40.3944, 0.0224425, -60.9702)
+
+[node name="brickWall31" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, 55.3964, 0.0224425, -60.9702)
+
+[node name="brickWall34" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, 58.3653, 0.0224425, -60.9702)
+
+[node name="brickWall32" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, 52.3431, 0.0224425, -60.9702)
+
+[node name="brickWall33" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, 49.4069, 0.0224425, -60.9702)
+
+[node name="brickWall5" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, -34.8354, 0.0224425, -60.9702)
+
+[node name="brickWall18" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, -37.8887, 0.0224425, -60.9702)
+
+[node name="brickWall19" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, -40.8398, 0.0224425, -60.9702)
+
+[node name="brickWall6" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, -25.8378, 0.0224425, -60.9702)
+
+[node name="brickWall20" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, -28.8911, 0.0224425, -60.9702)
+
+[node name="brickWall21" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, -31.8273, 0.0224425, -60.9702)
+
+[node name="brickWall35" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, -52.804, 0.0224425, -60.9702)
+
+[node name="brickWall36" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, -55.8574, 0.0224425, -60.9702)
+
+[node name="brickWall37" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, -58.8084, 0.0224425, -60.9702)
+
+[node name="brickWall38" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, -43.8065, 0.0224425, -60.9702)
+
+[node name="brickWall39" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, -46.8598, 0.0224425, -60.9702)
+
+[node name="brickWall40" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, -49.796, 0.0224425, -60.9702)
+
+[node name="brickWall7" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, -16.8459, 0.0224425, -60.9702)
+
+[node name="brickWall22" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, -19.8992, 0.0224425, -60.9702)
+
+[node name="brickWall23" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, -22.8503, 0.0224425, -60.9702)
+
+[node name="brickWall8" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, -7.84833, 0.0224425, -60.9702)
+
+[node name="brickWall24" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, -10.9017, 0.0224425, -60.9702)
+
+[node name="brickWall25" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, -13.8379, 0.0224425, -60.9702)
+
+[node name="brickWall41" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, 1.15269, 0.0224425, 58.5812)
+
+[node name="brickWall42" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, -1.90064, 0.0224425, 58.5812)
+
+[node name="brickWall43" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, -4.85171, 0.0224425, 58.5812)
+
+[node name="brickWall44" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, 10.1503, 0.0224425, 58.5812)
+
+[node name="brickWall45" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, 7.09694, 0.0224425, 58.5812)
+
+[node name="brickWall46" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, 4.16075, 0.0224425, 58.5812)
+
+[node name="brickWall47" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, 19.1422, 0.0224425, 58.5812)
+
+[node name="brickWall48" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, 16.0888, 0.0224425, 58.5812)
+
+[node name="brickWall49" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, 13.1378, 0.0224425, 58.5812)
+
+[node name="brickWall50" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, 28.1397, 0.0224425, 58.5812)
+
+[node name="brickWall51" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, 25.0864, 0.0224425, 58.5812)
+
+[node name="brickWall52" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, 22.1502, 0.0224425, 58.5812)
+
+[node name="brickWall53" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, 37.4069, 0.0224425, 58.5812)
+
+[node name="brickWall54" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, 34.3536, 0.0224425, 58.5812)
+
+[node name="brickWall55" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.3, 0, 0, 0, 3, 0, 0, 0, 3, 31.1149, 0.0224425, 58.5812)
+
+[node name="brickWall56" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, 46.3988, 0.0224425, 58.5812)
+
+[node name="brickWall57" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, 43.3455, 0.0224425, 58.5812)
+
+[node name="brickWall58" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, 40.3944, 0.0224425, 58.5812)
+
+[node name="brickWall59" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, 55.3964, 0.0224425, 58.5812)
+
+[node name="brickWall60" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, 58.3653, 0.0224425, 58.5812)
+
+[node name="brickWall61" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, 52.3431, 0.0224425, 58.5812)
+
+[node name="brickWall62" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, 49.4069, 0.0224425, 58.5812)
+
+[node name="brickWall63" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, -34.8354, 0.0224425, 58.5812)
+
+[node name="brickWall64" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, -37.8887, 0.0224425, 58.5812)
+
+[node name="brickWall65" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, -40.8398, 0.0224425, 58.5812)
+
+[node name="brickWall66" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, -25.8378, 0.0224425, 58.5812)
+
+[node name="brickWall67" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, -28.8911, 0.0224425, 58.5812)
+
+[node name="brickWall68" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, -31.8273, 0.0224425, 58.5812)
+
+[node name="brickWall69" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, -52.804, 0.0224425, 58.5812)
+
+[node name="brickWall70" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, -55.8574, 0.0224425, 58.5812)
+
+[node name="brickWall71" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, -58.8084, 0.0224425, 58.5812)
+
+[node name="brickWall72" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, -43.8065, 0.0224425, 58.5812)
+
+[node name="brickWall73" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, -46.8598, 0.0224425, 58.5812)
+
+[node name="brickWall74" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, -49.796, 0.0224425, 58.5812)
+
+[node name="brickWall75" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, -16.8459, 0.0224425, 58.5812)
+
+[node name="brickWall76" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, -19.8992, 0.0224425, 58.5812)
+
+[node name="brickWall77" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, -22.8503, 0.0224425, 58.5812)
+
+[node name="brickWall78" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, -7.84833, 0.0224425, 58.5812)
+
+[node name="brickWall79" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, -10.9017, 0.0224425, 58.5812)
+
+[node name="brickWall80" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(3.1, 0, 0, 0, 3, 0, 0, 0, 3, -13.8379, 0.0224425, 58.5812)
+
+[node name="brickWall81" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, -61.4979, 0.00702047, 4.44912)
+
+[node name="brickWall82" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, -61.4763, 0.00247097, 1.44644)
+
+[node name="brickWall83" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, -61.4763, 0.00247097, 7.44017)
+
+[node name="brickWall84" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, -61.4979, 0.00702047, 13.4824)
+
+[node name="brickWall85" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, -61.4763, 0.00247097, 10.4797)
+
+[node name="brickWall86" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, -61.4763, 0.00247097, 16.4734)
+
+[node name="brickWall87" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, -61.4979, 0.00702047, 22.4846)
+
+[node name="brickWall88" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, -61.4763, 0.00247097, 19.4819)
+
+[node name="brickWall89" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, -61.4763, 0.00247097, 25.4757)
+
+[node name="brickWall90" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, -61.4979, 0.00702047, 31.5179)
+
+[node name="brickWall91" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, -61.4763, 0.00247097, 28.5152)
+
+[node name="brickWall92" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, -61.4763, 0.00247097, 34.5089)
+
+[node name="brickWall93" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, -61.4979, 0.00702047, 40.4894)
+
+[node name="brickWall94" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, -61.4763, 0.00247097, 37.4867)
+
+[node name="brickWall95" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, -61.4763, 0.00247097, 43.4804)
+
+[node name="brickWall96" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, -61.4979, 0.00702047, 49.5227)
+
+[node name="brickWall97" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, -61.4763, 0.00247097, 46.52)
+
+[node name="brickWall98" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, -61.4763, 0.00247097, 52.5137)
+
+[node name="brickWall99" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, -61.4979, 0.00702047, 58.5249)
+
+[node name="brickWall100" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, -61.4763, 0.00247097, 55.5222)
+
+[node name="brickWall101" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, -61.4979, 0.00702047, -46.6117)
+
+[node name="brickWall102" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, -61.4763, 0.00247097, -49.6144)
+
+[node name="brickWall103" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, -61.4763, 0.00247097, -43.6207)
+
+[node name="brickWall104" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, -61.4979, 0.00702047, -37.6095)
+
+[node name="brickWall105" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, -61.4763, 0.00247097, -40.6122)
+
+[node name="brickWall118" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, -61.5064, 0.0214074, -58.3594)
+
+[node name="brickWall120" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, -61.4808, 0.0122325, -55.3768)
+
+[node name="brickWall121" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, -61.4763, 0.00247097, -52.5151)
+
+[node name="brickWall106" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, -61.4763, 0.00247097, -34.6906)
+
+[node name="brickWall107" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, -61.4979, 0.00702047, -28.5762)
+
+[node name="brickWall108" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, -61.4763, 0.00247097, -31.5789)
+
+[node name="brickWall109" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, -61.4763, 0.00247097, -25.5852)
+
+[node name="brickWall110" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, -61.4979, 0.00702047, -19.6047)
+
+[node name="brickWall111" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, -61.4763, 0.00247097, -22.6074)
+
+[node name="brickWall112" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, -61.4763, 0.00247097, -16.6137)
+
+[node name="brickWall113" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, -61.4979, 0.00702047, -10.5715)
+
+[node name="brickWall114" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, -61.4763, 0.00247097, -13.5741)
+
+[node name="brickWall115" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, -61.4763, 0.00247097, -7.58041)
+
+[node name="brickWall116" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, -61.4979, 0.00702047, -1.56925)
+
+[node name="brickWall117" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, -61.4763, 0.00247097, -4.57193)
+
+[node name="brickWall119" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, 58.8095, 0.00702047, 4.44912)
+
+[node name="brickWall122" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, 58.8312, 0.00247097, 1.44644)
+
+[node name="brickWall123" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, 58.8312, 0.00247097, 7.44017)
+
+[node name="brickWall124" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, 58.8095, 0.00702047, 13.4824)
+
+[node name="brickWall125" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, 58.8312, 0.00247097, 10.4797)
+
+[node name="brickWall126" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, 58.8312, 0.00247097, 16.4734)
+
+[node name="brickWall127" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, 58.8095, 0.00702047, 22.4846)
+
+[node name="brickWall128" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, 58.8312, 0.00247097, 19.4819)
+
+[node name="brickWall129" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, 58.8312, 0.00247097, 25.4757)
+
+[node name="brickWall130" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, 58.8095, 0.00702047, 31.5179)
+
+[node name="brickWall131" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, 58.8312, 0.00247097, 28.5152)
+
+[node name="brickWall132" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, 58.8312, 0.00247097, 34.5089)
+
+[node name="brickWall133" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, 58.8095, 0.00702047, 40.4894)
+
+[node name="brickWall134" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, 58.8312, 0.00247097, 37.4867)
+
+[node name="brickWall135" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, 58.8312, 0.00247097, 43.4804)
+
+[node name="brickWall136" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, 58.8095, 0.00702047, 49.5227)
+
+[node name="brickWall137" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, 58.8312, 0.00247097, 46.52)
+
+[node name="brickWall138" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, 58.8312, 0.00247097, 52.5137)
+
+[node name="brickWall139" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, 58.8095, 0.00702047, 58.5249)
+
+[node name="brickWall140" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, 58.8312, 0.00247097, 55.5222)
+
+[node name="brickWall141" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, 58.8095, 0.00702047, -46.6117)
+
+[node name="brickWall142" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, 58.8312, 0.00247097, -49.6144)
+
+[node name="brickWall143" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, 58.8312, 0.00247097, -43.6207)
+
+[node name="brickWall144" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, 58.8095, 0.00702047, -37.6095)
+
+[node name="brickWall145" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, 58.8312, 0.00247097, -40.6122)
+
+[node name="brickWall146" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, 58.8011, 0.0214074, -58.3594)
+
+[node name="brickWall147" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, 58.8266, 0.0122325, -55.3768)
+
+[node name="brickWall148" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, 58.8312, 0.00247097, -52.5151)
+
+[node name="brickWall149" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, 58.8312, 0.00247097, -34.6906)
+
+[node name="brickWall150" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, 58.8095, 0.00702047, -28.5762)
+
+[node name="brickWall151" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, 58.8312, 0.00247097, -31.5789)
+
+[node name="brickWall152" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, 58.8312, 0.00247097, -25.5852)
+
+[node name="brickWall153" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, 58.8095, 0.00702047, -19.6047)
+
+[node name="brickWall154" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, 58.8312, 0.00247097, -22.6074)
+
+[node name="brickWall155" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, 58.8312, 0.00247097, -16.6137)
+
+[node name="brickWall156" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, 58.8095, 0.00702047, -10.5715)
+
+[node name="brickWall157" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, 58.8312, 0.00247097, -13.5741)
+
+[node name="brickWall158" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, 58.8312, 0.00247097, -7.58041)
+
+[node name="brickWall159" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, 58.8095, 0.00702047, -1.56925)
+
+[node name="brickWall160" parent="Map/NavigationRegion3D/Walls" instance=ExtResource("5_5m1fu")]
+transform = Transform3D(-1.35505e-07, 1.04636e-15, 3, 1.08124e-15, 3, -1.04636e-15, -3.1, 1.04636e-15, -1.31134e-07, 58.8312, 0.00247097, -4.57193)
 
 [node name="Spawns" type="Node3D" parent="Map"]
 
@@ -2662,7 +3137,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.4121, 0, 39.3387)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.62497, 0, 43.2748)
 
 [node name="Spawn55" type="Node3D" parent="Map/Spawns"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.9096, 0, 51.8851)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.8039, 0, 51.8851)
 
 [node name="Spawn56" type="Node3D" parent="Map/Spawns"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.6311, 0, 51.8851)
@@ -2823,8 +3298,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.8125, 0, -11.2517)
 [node name="Spawn40" type="Node3D" parent="Map/Spawns"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.0795, 0, -15.2755)
 
+[node name="Moon" type="CSGSphere3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 0.999958, -0.00921521, 0, 0.00921521, 0.999958, -162.781, 235.428, 356.554)
+material_override = SubResource("StandardMaterial3D_1xk3e")
+cast_shadow = 0
+radius = 20.0
+
 [node name="ZombieSpawnTimer" type="Timer" parent="."]
-wait_time = 2.0
 autostart = true
 
 [node name="GG" type="Control" parent="."]
@@ -2897,6 +3377,10 @@ autoplay = true
 
 [node name="NextLevel" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("37_o1scq")
+volume_db = 4.0
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
 
 [connection signal="game_over" from="Map/NavigationRegion3D/Player" to="." method="_on_player_game_over"]
 [connection signal="timeout" from="ZombieSpawnTimer" to="." method="_on_zombie_spawn_timer_timeout"]
+[connection signal="save_score" from="GG/GameOver" to="." method="_on_game_over_save_score"]

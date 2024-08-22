@@ -30,6 +30,10 @@ window/stretch/aspect="expand"
 
 enabled=PackedStringArray("res://addons/simplegrasstextured/plugin.cfg")
 
+[gui]
+
+theme/custom_font="res://Assets/terror_pro.ttf"
+
 [input]
 
 Enter={

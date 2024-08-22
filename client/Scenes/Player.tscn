@@ -279,6 +279,7 @@ stream = ExtResource("11_4shbh")
 
 [node name="EmptyShot" type="AudioStreamPlayer" parent="Head/Camera3D/WeaponManager"]
 stream = ExtResource("12_vcvfg")
+volume_db = 4.0
 
 [node name="Reload" type="AudioStreamPlayer" parent="Head/Camera3D/WeaponManager"]
 stream = ExtResource("12_rglh6")
@@ -393,28 +394,29 @@ volume_db = -3.0
 
 [node name="Label" type="Label" parent="."]
 offset_left = 10.0
+offset_top = 11.0
 offset_right = 138.0
-offset_bottom = 26.0
+offset_bottom = 37.0
 text = "Current Weapon"
 
 [node name="CurrentWeapon" type="Label" parent="."]
 offset_left = 142.0
-offset_top = 1.0
+offset_top = 12.0
 offset_right = 143.0
-offset_bottom = 24.0
+offset_bottom = 35.0
 
 [node name="Label2" type="Label" parent="."]
 offset_left = 10.0
-offset_top = 25.0
+offset_top = 36.0
 offset_right = 125.0
-offset_bottom = 51.0
+offset_bottom = 62.0
 text = "Current Ammo"
 
 [node name="CurrentAmmo" type="Label" parent="."]
 offset_left = 129.0
-offset_top = 26.0
+offset_top = 37.0
 offset_right = 130.0
-offset_bottom = 49.0
+offset_bottom = 60.0
 
 [node name="Running" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("38_es1ol")
@@ -436,6 +438,7 @@ volume_db = 5.0
 stream = ExtResource("42_y3tav")
 volume_db = 9.0
 
+[connection signal="game_over" from="." to="Head/Camera3D/WeaponManager" method="_on_player_game_over"]
 [connection signal="player_ready" from="." to="Head/Camera3D/WeaponManager" method="_on_player_player_ready"]
 [connection signal="do_melee" from="Head/Camera3D/WeaponManager" to="." method="_on_weapon_manager_do_melee"]
 [connection signal="shoot_bullet" from="Head/Camera3D/WeaponManager" to="." method="_on_weapon_manager_shoot_bullet"]
